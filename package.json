@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "qs": "^6.10.3"
+  },
+  "devDependencies": {
+    "sass": "^1.52.1",
+    "sass-loader": "^13.0.0"
+  }
+}

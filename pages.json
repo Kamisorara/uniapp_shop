@@ -40,7 +40,7 @@
 	//全局配置
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "KamisoraMall",
 		"navigationBarBackgroundColor": "#f0eee1",
 		"backgroundColor": "#dfdfdf"
 	},

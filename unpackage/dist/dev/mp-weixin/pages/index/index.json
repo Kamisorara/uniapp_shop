@@ -2,5 +2,9 @@
   "navigationBarTitleText": "商城首页",
   "navigationBarBackgroundColor": "#f0eee1",
   "enablePullDownRefresh": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "u-swiper": "/uni_modules/uview-ui/components/u-swiper/u-swiper",
+    "u-sticky": "/uni_modules/uview-ui/components/u-sticky/u-sticky",
+    "u-search": "/uni_modules/uview-ui/components/u-search/u-search"
+  }
 }
