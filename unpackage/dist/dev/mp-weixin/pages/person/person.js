@@ -95,6 +95,9 @@ try {
   components = {
     "u-Input": function() {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 302))
+    },
+    uButton: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 237))
     }
   }
 } catch (e) {
@@ -151,15 +154,34 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+var _login2 = __webpack_require__(/*! @/common/api/login.js */ 248);
+var _token = __webpack_require__(/*! @/utils/token.js */ 249); //
 //
 //
 //
 //
 //
 //
-var _default =
-{};exports.default = _default;
+//
+var _default = { data: function data() {return { userInfo: { username: '', password: '' } };
+  },
+  methods: {
+    login: function login() {
+      (0, _token.removeToken)('token');
+      (0, _login2.login)(this.userInfo).then(function (res) {
+        console.log(res);
+        (0, _token.setToken)('token', res.data.data.token);
+      });
+    } } };exports.default = _default;
 
 /***/ })
 

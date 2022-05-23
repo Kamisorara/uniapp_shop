@@ -244,151 +244,109 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _login = __webpack_require__(/*! @/common/api/login.js */ 248);
-var _token = __webpack_require__(/*! @/utils/token.js */ 249); //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = { data: function data() {return { recommendedList: [{ id: 1, img: 'https://g-search1.alicdn.com/img/bao/uploaded/i4/i3/2213026174672/O1CN01xHisdS1kNpB3NZsXc_!!2213026174672-0-scmitem1000.jpg_580x580Q90.jpg_.webp', title: '电子推荐' }, { id: 2, img: 'https://g-search3.alicdn.com/img/bao/uploaded/i4/i4/1773095659/O1CN01zF2tqf1rfs5hvciUJ_!!0-item_pic.jpg_580x580Q90.jpg_.webp', title: '排行榜' }, { id: 3, img: 'https://gw.alicdn.com/bao/uploaded/i1/2023486475/O1CN01nr6qrl1xhb6QULbMO_!!0-item_pic.jpg_300x300q90.jpg_.webp', title: '每日特价' }, { id: 4, img: 'https://g-search2.alicdn.com/img/bao/uploaded/i4/i1/92688455/O1CN019LQfcg2CKRUWFNnsw_!!92688455.jpg_580x580Q90.jpg_.webp', title: '新品首发' }, { id: 5, img: 'https://g-search3.alicdn.com/img/bao/uploaded/i4/i2/1714128138/O1CN011UNEOH29zFwLV8gzs_!!0-item_pic.jpg_580x580Q90.jpg_.webp', title: '史低特惠' }, { id: 6, img: 'https://g-search3.alicdn.com/img/bao/uploaded/i4/i4/6000000005938/O1CN012becmd1tjeaxmCtfY_!!6000000005938-0-picassoopen.jpg_580x580Q90.jpg_.webp', title: '进口特惠' }], tab: [{ name: '推荐', badge: { isDot: true } }, { name: '宠物' }, { name: '二手拍拍' }, { name: '音乐' }, { name: '图书' }, { name: '奢侈品' }, { name: '手机' }, { name: '运动' }], indicator: true,
-      list: [
-      {
-        name: '充值中心',
-        thumb: 'https://cdn.uviewui.com/uview/menu/8.png' },
-
-      {
-        name: '天猫购物',
-        thumb: 'https://cdn.uviewui.com/uview/menu/11.png' },
-
-      {
-        name: '海鲜市场',
-        thumb: 'https://cdn.uviewui.com/uview/menu/4.png' },
-
-      {
-        name: '大众点评',
-        thumb: 'https://cdn.uviewui.com/uview/menu/7.png' },
-
-      {
-        name: '会员中心',
-        thumb: 'https://cdn.uviewui.com/uview/menu/6.png' },
-
-      {
-        name: '天猫国际',
-        thumb: 'https://cdn.uviewui.com/uview/menu/17.png' }],
 
 
-      noticeBarText: '此商城仅为学习开发使用，如有bug请提交至Kamisola2020@163.com,感谢使用！！！',
-      photos: [
-      'https://img.alicdn.com/imgextra/i3/6000000001767/O1CN01bhatde1OvKbVoG4yV_!!6000000001767-0-octopus.jpg',
-      'https://img.alicdn.com/imgextra/i3/6000000005682/O1CN01JcsUaP1rqPCe6tkKn_!!6000000005682-2-octopus.png',
-      'https://img.alicdn.com/imgextra/i3/6000000006472/O1CN01azCL9h1xgE5uwaVRZ_!!6000000006472-2-octopus.png',
-      'https://img.alicdn.com/imgextra/i3/6000000002280/O1CN01RR4L1s1SiHmcYknGP_!!6000000002280-0-octopus.jpg'],
-
-      token: '',
-      keyword: '请输入要查找的商品',
-      title: 'Hello',
-      id: 1,
-      //测试登录数据
-      userInfo: {
-        username: '',
-        password: '' } };
 
 
+var _token = __webpack_require__(/*! @/utils/token.js */ 249);
+var _shopIndex = __webpack_require__(/*! @/common/api/index/shopIndex.js */ 327); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { data: function data() {return { recommendedList: [{ id: 1, picture: 'https://g-search1.alicdn.com/img/bao/uploaded/i4/i3/2213026174672/O1CN01xHisdS1kNpB3NZsXc_!!2213026174672-0-scmitem1000.jpg_580x580Q90.jpg_.webp', title: '电子推荐' }], commoditiesList: [{ id: 1, mainPhoto: '', originalPrice: 199, price: 99, shopName: '测试' }], tab: [{ name: '推荐', badge: { isDot: true } }, { name: '宠物' }, { name: '二手拍拍' }, { name: '音乐' }, { name: '图书' }, { name: '奢侈品' }, { name: '手机' }, { name: '运动' }], indicator: true, classification: [{ title: '充值中心', picture: 'https://cdn.uviewui.com/uview/menu/8.png' }], noticeBarText: '此商城仅为学习开发使用，如有bug请提交至Kamisola2020@163.com,感谢使用！！！', photos: ['https://img.alicdn.com/imgextra/i3/6000000001767/O1CN01bhatde1OvKbVoG4yV_!!6000000001767-0-octopus.jpg', 'https://img.alicdn.com/imgextra/i3/6000000005682/O1CN01JcsUaP1rqPCe6tkKn_!!6000000005682-2-octopus.png', 'https://img.alicdn.com/imgextra/i3/6000000006472/O1CN01azCL9h1xgE5uwaVRZ_!!6000000006472-2-octopus.png', 'https://img.alicdn.com/imgextra/i3/6000000002280/O1CN01RR4L1s1SiHmcYknGP_!!6000000002280-0-octopus.jpg'], token: '', keyword: '请输入要查找的商品', title: 'Hello', id: 1 };}, onLoad: function onLoad() {}, onReady: function onReady() {
+    this.getClassifications();
+    this.getCommodities();
+    this.getRecommendeds();
   },
-  onLoad: function onLoad() {},
   methods: {
-    //测试
-    test: function test() {
-      uni.request({
-        url: 'http://192.168.31.174:8080/user/login',
-        method: 'POST',
-        header: {
-          'Content-type': 'application/x-www-form-urlencoded' },
-
-        data: this.userInfo,
-        success: function success(res) {
-          console.log(res);
-        } });
-
-    },
-    test2: function test2() {
-      (0, _token.removeToken)('token');
-      (0, _login.login)(this.userInfo).then(function (res) {
+    //获取分类详情
+    getClassifications: function getClassifications() {var _this = this;
+      (0, _shopIndex.getClassification)().then(function (res) {
         console.log(res);
-        (0, _token.setToken)('token', res.data.data.token);
+        _this.classification = res.data.data;
       });
     },
-    clear: function clear() {
-      uni.removeStorageSync('token');
-    },
-    toDetail: function toDetail() {
-      uni.navigateTo({
-        url: '/pages/detail/commodityDetail?id=' + this.id });
 
+    //获取推荐详情
+    getRecommendeds: function getRecommendeds() {var _this2 = this;
+      (0, _shopIndex.getRecommended)().then(function (res) {
+        console.log(res);
+        _this2.recommendedList = res.data.data;
+      });
     },
-    getToken: function getToken() {
-      this.token = uni.getStorageSync('token');
+
+    //获取首页商品列表
+    getCommodities: function getCommodities() {var _this3 = this;
+      (0, _shopIndex.getAllCommodities)().then(function (res) {
+        console.log(res);
+        _this3.commoditiesList = res.data.data;
+      });
     } },
 
   onPullDownRefresh: function onPullDownRefresh() {
