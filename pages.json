@@ -72,14 +72,5 @@
 				"selectedIconPath": "static/selected/account.png"
 			}
 		]
-	},
-
-	"condition": {
-		"current": 0,
-		"list": [{
-			"name": "商品详情页",
-			"path": "pages/detail/commodityDetail",
-			"query": "id=1"
-		}]
 	}
 }

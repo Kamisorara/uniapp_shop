@@ -3,11 +3,22 @@
 const baseUrl = 'http://192.168.31.174:8080'
 
 const request = (options = {}) => {
-	let token = uni.getStorageInfoSync("token");
-	options.header = {
-		"Content-Type": "application/x-www-form-urlencoded",
-		'token': '',
+	let token = "";
+	if (uni.getStorageSync('token') == null) {
+		token = "";
+	} else {
+		token = uni.getStorageSync('token');
 	}
+	options.header = (options.method == 'GET' ? {
+		'X-Requested-With': 'XMLHttpRequest',
+		"Accept": "application/json",
+		"Content-Type": "application/json; charset=UTF-8",
+		'token': token
+	} : {
+		'X-Requested-With': 'XMLHttpRequest',
+		'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+		'token': token,
+	});
 	return new Promise((resolve, reject) => {
 		uni.request({
 			url: baseUrl + options.url || '',

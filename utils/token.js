@@ -1,12 +1,11 @@
-const tokenKey = 'token';
-
-export function setToken(token) {
+export function setToken(tokenKey, token) {
 	return uni.setStorageSync(tokenKey, token);
 };
 
-export function getToken() {
+export function getToken(tokenKey) {
 	return uni.getStorageSync(tokenKey);
 };
-export function removeToken() {
+
+export function removeToken(tokenKey) {
 	return uni.removeStorageSync(tokenKey);
 }

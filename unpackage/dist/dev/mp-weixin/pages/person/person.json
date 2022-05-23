@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "关于我",
   "navigationBarBackgroundColor": "#f0eee1",
-  "usingComponents": {}
+  "usingComponents": {
+    "u--input": "/uni_modules/uview-ui/components/u--input/u--input"
+  }
 }

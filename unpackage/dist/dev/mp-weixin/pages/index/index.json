@@ -3,8 +3,14 @@
   "navigationBarBackgroundColor": "#f0eee1",
   "enablePullDownRefresh": true,
   "usingComponents": {
+    "u-tabs": "/uni_modules/uview-ui/components/u-tabs/u-tabs",
     "u-swiper": "/uni_modules/uview-ui/components/u-swiper/u-swiper",
     "u-sticky": "/uni_modules/uview-ui/components/u-sticky/u-sticky",
-    "u-search": "/uni_modules/uview-ui/components/u-search/u-search"
+    "u-search": "/uni_modules/uview-ui/components/u-search/u-search",
+    "u-notice-bar": "/uni_modules/uview-ui/components/u-notice-bar/u-notice-bar",
+    "u-scroll-list": "/uni_modules/uview-ui/components/u-scroll-list/u-scroll-list",
+    "u-grid": "/uni_modules/uview-ui/components/u-grid/u-grid",
+    "u-grid-item": "/uni_modules/uview-ui/components/u-grid-item/u-grid-item",
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon"
   }
 }

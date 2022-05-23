@@ -1,7 +1,12 @@
 <template>
-	<view><text>this is person page</text></view>
+	<view class="person">
+		<u--input placeholder="请输入内容" border="surround" v-model="value"></u--input>
+		<u--input placeholder="请输入内容" border="surround" v-model="value"></u--input>
+	</view>
 </template>
 
-<script></script>
+<script>
+export default {};
+</script>
 
 <style></style>

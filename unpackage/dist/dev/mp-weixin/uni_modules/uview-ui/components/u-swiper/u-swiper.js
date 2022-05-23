@@ -1,5 +1,46 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["uni_modules/uview-ui/components/u-swiper/u-swiper"],{
 
+/***/ 167:
+/*!***********************************************************************************************!*\
+  !*** D:/Code Learning/前端开发/shop_uniapp/uni_modules/uview-ui/components/u-swiper/u-swiper.vue ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _u_swiper_vue_vue_type_template_id_6b019429_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./u-swiper.vue?vue&type=template&id=6b019429&scoped=true& */ 168);
+/* harmony import */ var _u_swiper_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./u-swiper.vue?vue&type=script&lang=js& */ 170);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _u_swiper_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _u_swiper_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _u_swiper_vue_vue_type_style_index_0_id_6b019429_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./u-swiper.vue?vue&type=style&index=0&id=6b019429&lang=scss&scoped=true& */ 173);
+/* harmony import */ var _Uniapp_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../Uniapp/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 11);
+
+var renderjs
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_Uniapp_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _u_swiper_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _u_swiper_vue_vue_type_template_id_6b019429_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _u_swiper_vue_vue_type_template_id_6b019429_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "6b019429",
+  null,
+  false,
+  _u_swiper_vue_vue_type_template_id_6b019429_scoped_true___WEBPACK_IMPORTED_MODULE_0__["components"],
+  renderjs
+)
+
+component.options.__file = "uni_modules/uview-ui/components/u-swiper/u-swiper.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
 /***/ 168:
 /*!******************************************************************************************************************************************!*\
   !*** D:/Code Learning/前端开发/shop_uniapp/uni_modules/uview-ui/components/u-swiper/u-swiper.vue?vue&type=template&id=6b019429&scoped=true& ***!
@@ -39,10 +80,10 @@ var components
 try {
   components = {
     uLoadingIcon: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-loading-icon/u-loading-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-loading-icon/u-loading-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-loading-icon/u-loading-icon.vue */ 175))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-loading-icon/u-loading-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-loading-icon/u-loading-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-loading-icon/u-loading-icon.vue */ 191))
     },
     uSwiperIndicator: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper-indicator/u-swiper-indicator */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper-indicator/u-swiper-indicator")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper-indicator/u-swiper-indicator.vue */ 183))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper-indicator/u-swiper-indicator */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper-indicator/u-swiper-indicator")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper-indicator/u-swiper-indicator.vue */ 199))
     }
   }
 } catch (e) {
@@ -413,47 +454,6 @@ __webpack_require__.r(__webpack_exports__);
     if(false) { var cssReload; }
   
 
-/***/ }),
-
-/***/ 191:
-/*!***********************************************************************************************!*\
-  !*** D:/Code Learning/前端开发/shop_uniapp/uni_modules/uview-ui/components/u-swiper/u-swiper.vue ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _u_swiper_vue_vue_type_template_id_6b019429_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./u-swiper.vue?vue&type=template&id=6b019429&scoped=true& */ 168);
-/* harmony import */ var _u_swiper_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./u-swiper.vue?vue&type=script&lang=js& */ 170);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _u_swiper_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _u_swiper_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _u_swiper_vue_vue_type_style_index_0_id_6b019429_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./u-swiper.vue?vue&type=style&index=0&id=6b019429&lang=scss&scoped=true& */ 173);
-/* harmony import */ var _Uniapp_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../Uniapp/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 11);
-
-var renderjs
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_Uniapp_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _u_swiper_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _u_swiper_vue_vue_type_template_id_6b019429_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _u_swiper_vue_vue_type_template_id_6b019429_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  "6b019429",
-  null,
-  false,
-  _u_swiper_vue_vue_type_template_id_6b019429_scoped_true___WEBPACK_IMPORTED_MODULE_0__["components"],
-  renderjs
-)
-
-component.options.__file = "uni_modules/uview-ui/components/u-swiper/u-swiper.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
 /***/ })
 
 }]);
@@ -462,7 +462,7 @@ component.options.__file = "uni_modules/uview-ui/components/u-swiper/u-swiper.vu
     'uni_modules/uview-ui/components/u-swiper/u-swiper-create-component',
     {
         'uni_modules/uview-ui/components/u-swiper/u-swiper-create-component':(function(module, exports, __webpack_require__){
-            __webpack_require__('1')['createComponent'](__webpack_require__(191))
+            __webpack_require__('1')['createComponent'](__webpack_require__(167))
         })
     },
     [['uni_modules/uview-ui/components/u-swiper/u-swiper-create-component']]
