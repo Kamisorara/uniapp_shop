@@ -9,6 +9,14 @@
 			}
 		},
 		{
+			"path": "pages/classify/classify",
+			"style": {
+				"navigationBarTitleText": "商品分类",
+				"navigationBarBackgroundColor": "#f0eee1"
+			}
+		},
+
+		{
 			"path": "pages/message/message",
 			"style": {
 				"navigationBarTitleText": "信息",
@@ -35,6 +43,13 @@
 				"navigationBarTitleText": "商品详情页",
 				"navigationBarBackgroundColor": "#ffdcd8"
 			}
+		},
+		{
+			"path": "pages/commodityDetail/commodityDetail",
+			"style": {
+				"navigationBarTitleText": "商品详情",
+				"navigationBarBackgroundColor": "#ffdcd8"
+			}
 		}
 	],
 	//全局配置
@@ -52,6 +67,12 @@
 				"pagePath": "pages/index/index",
 				"iconPath": "static/unselected/home.png",
 				"selectedIconPath": "static/selected/home.png"
+			},
+			{
+				"text": "分类",
+				"pagePath": "pages/classify/classify",
+				"iconPath": "./static/unselected/RectangleCopy.png",
+				"selectedIconPath": "static/selected/RectangleCopy (1).png"
 			},
 			{
 				"text": "信息",
@@ -72,5 +93,13 @@
 				"selectedIconPath": "static/selected/account.png"
 			}
 		]
+	},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [{
+			"name": "", //模式名称
+			"path": "", //启动页面，必选
+			"query": "" //启动参数，在页面的onLoad函数里面得到
+		}]
 	}
 }

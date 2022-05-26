@@ -1,5 +1,3 @@
-// http.js
-// 通常可以吧 baseUrl 单独放在一个 js 文件了
 const baseUrl = 'http://192.168.31.174:8080'
 
 const request = (options = {}) => {

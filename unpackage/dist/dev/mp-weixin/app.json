@@ -1,10 +1,12 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/classify/classify",
     "pages/message/message",
     "pages/cart/cart",
     "pages/person/person",
-    "pages/detail/commodityDetail"
+    "pages/detail/commodityDetail",
+    "pages/commodityDetail/commodityDetail"
   ],
   "subPackages": [],
   "window": {
@@ -22,6 +24,12 @@
         "pagePath": "pages/index/index",
         "iconPath": "static/unselected/home.png",
         "selectedIconPath": "static/selected/home.png"
+      },
+      {
+        "text": "分类",
+        "pagePath": "pages/classify/classify",
+        "iconPath": "./static/unselected/RectangleCopy.png",
+        "selectedIconPath": "static/selected/RectangleCopy (1).png"
       },
       {
         "text": "信息",
@@ -43,6 +51,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

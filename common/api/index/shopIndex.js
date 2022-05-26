@@ -16,3 +16,14 @@ export function getRecommended() {
 export function getAllCommodities() {
 	return request.get('/uni-shop/index/get-index-commodities');
 }
+
+
+//分页获取商品列表
+export function getCommodities(pageNum, pageSize) {
+	return request.get('/uni-shop/index/getPageCommodities?pageNum=' + pageNum + '&pageSize=' + pageSize);
+}
+
+//获取轮播图图片
+export function getAllSwiperPicture() {
+	return request.get('/uni-shop/index/getSwiperPicture');
+}
