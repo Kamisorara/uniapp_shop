@@ -1,19 +1,46 @@
 <template>
 	<view class="commodityDetail">
-		<view class="swiper" style="margin-top: 100rpx;">
+		<view class="swiper" style="margin-top: 60rpx;">
 			<u-swiper height="500" :list="list6" @change="e => (currentNum = e.current)" :autoplay="false" indicatorStyle="right: 20px">
 				<view slot="indicator" class="indicator-num">
 					<text class="indicator-num__text">{{ currentNum + 1 }}/{{ list6.length }}</text>
 				</view>
 			</u-swiper>
 		</view>
+		<view class="shop-price" style="background-color: #ffffff;height: 60px;display: flex;">
+			<view class="prive" style="margin-top: 10px;width: 250px;margin-left: 15px;">
+				<text style="color: red;font-size: 20px;">￥</text>
+				<text style="color: red;font-weight: 600;font-size: 25px;">39999999.00</text>
+			</view>
+			<view class="img1" style="margin-left: 40rpx;">
+				<image src="/static/unselected/Foreigncurrency.png" style="height: 35px;width: 35px;margin-left: 7px;"></image>
+				<view><text style="font-size: 10px;color:darkgray;">降价提醒</text></view>
+			</view>
+			<view class="img2" style="margin-left: 30rpx;">
+				<image src="/static/unselected/goumaipianhao.png" style="height: 35px;width: 35px;"></image>
+				<view><text style="font-size: 10px;margin-left: 8px;color:darkgray;">收藏</text></view>
+			</view>
+		</view>
+		<!-- 商品名称 -->
+		<view class="commodities-name" style="background-color: #ffffff;height: 60px;border-bottom-left-radius: 12px;border-bottom-right-radius: 12px;">
+			<text style="font-size: 18px;font-weight: 700;">日本柴犬幼犬纯种豆柴活体宠物狗家养犬黑白赤柴秋田血统CKU犬舍</text>
+		</view>
+		<!-- 活动 -->
+		<view class="avtivity" style="background-color: #ffffff;height: 50px;margin-top: 20px;display: flex;border-top-left-radius: 12px;border-top-right-radius: 12px;">
+			<view class="activity-title" style="margin-top: 15px;"><text style="font-size: 15px;font-weight: 700;">活动</text></view>
+			<view class="activity-detail" style="display: flex;margin-left: 15px;margin-top: 13px;width: 300px;">
+				<view style="width: 60px;"><u-tag text="首单专享" type="error" plain plainFill size="mini"></u-tag></view>
+				<text style="margin-left: 15px;font-size: 13px;margin-top: 3px;">新人专属优惠,一单就回本</text>
+			</view>
+		</view>
+		<!-- 底部栏 -->
 		<view class="bottom-tabbar">
 			<u-tabbar :value="value6" @change="name => (value6 = name)" :fixed="true" :placeholder="true" :safeAreaInsetBottom="true">
 				<u-tabbar-item text="店铺" icon="home"></u-tabbar-item>
 				<u-tabbar-item text="客服" icon="server-man"></u-tabbar-item>
 				<u-tabbar-item text="购物车" icon="shopping-cart"></u-tabbar-item>
-				<u-button type="primary" shape="circle" text="加入购物车" iconColor="#feff9c"></u-button>
-				<u-button type="primary" shape="circle" text="按钮形状" iconColor="#feff9c"></u-button>
+				<u-button type="primary" shape="circle" text="加入购物车" color="#f0e21e"></u-button>
+				<u-button type="primary" shape="circle" text="按钮形状" color="#ec3f0a"></u-button>
 			</u-tabbar>
 		</view>
 	</view>

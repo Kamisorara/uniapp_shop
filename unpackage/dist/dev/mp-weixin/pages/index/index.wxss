@@ -24,28 +24,31 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.scroll-list {
+.scroll-list.data-v-57280228 {
   display: flex;
   flex-direction: column;
 }
-.scroll-list__goods-item {
+.scroll-list__goods-item.data-v-57280228 {
   margin-right: 20px;
 }
-.scroll-list__goods-item__image {
+.scroll-list__goods-item__image.data-v-57280228 {
   width: 70px;
   height: 60px;
   border-radius: 4px;
 }
-.scroll-list__goods-item__text {
+.scroll-list__goods-item__text.data-v-57280228 {
   color: #7f7b87;
   text-align: center;
   font-size: 12px;
   margin-top: 5px;
 }
-.grid-text {
+.grid-text.data-v-57280228 {
   font-size: 14px;
   color: #d66b64;
   padding: 20rpx 0 10rpx 0rpx;
   box-sizing: border-box;
+}
+.wrap.data-v-57280228 {
+  height: 200vh;
 }
 

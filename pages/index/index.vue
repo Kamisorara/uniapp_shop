@@ -70,6 +70,7 @@
 			</view>
 		</view>
 		<u-loadmore :status="status" :loading-text="loadMore.loadingText" :loadmore-text="loadMore.loadmoreText" :nomore-text="loadMore.nomoreText" icon />
+		<u-back-top :scroll-top="scrollTop"></u-back-top>
 	</view>
 </template>
 
@@ -79,6 +80,8 @@ import { getClassification, getRecommended, getCommodities, getAllSwiperPicture 
 export default {
 	data() {
 		return {
+			//回到顶部
+			scrollTop: 0,
 			//page
 			pageSize: 6, //每页加载的个数
 			pageNum: 1, //当前的页数
@@ -160,6 +163,9 @@ export default {
 			id: 1
 		};
 	},
+	onPageScroll(e) {
+		this.scrollTop = e.scrollTop;
+	},
 	onLoad() {},
 	onReady() {
 		this.getClassifications();
@@ -233,7 +239,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .scroll-list {
 	@include flex(column);
 
@@ -261,5 +267,8 @@ export default {
 	/* #ifndef APP-PLUS */
 	box-sizing: border-box;
 	/* #endif */
+}
+.wrap {
+	height: 200vh;
 }
 </style>

@@ -12,6 +12,7 @@
     "u-grid": "/uni_modules/uview-ui/components/u-grid/u-grid",
     "u-grid-item": "/uni_modules/uview-ui/components/u-grid-item/u-grid-item",
     "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
-    "u-loadmore": "/uni_modules/uview-ui/components/u-loadmore/u-loadmore"
+    "u-loadmore": "/uni_modules/uview-ui/components/u-loadmore/u-loadmore",
+    "u-back-top": "/uni_modules/uview-ui/components/u-back-top/u-back-top"
   }
 }
