@@ -38,19 +38,20 @@
 			}
 		},
 		{
-			"path": "pages/detail/commodityDetail",
-			"style": {
-				"navigationBarTitleText": "商品详情页",
-				"navigationBarBackgroundColor": "#ffdcd8"
-			}
-		},
-		{
 			"path": "pages/commodityDetail/commodityDetail",
 			"style": {
 				"navigationBarTitleText": "商品详情",
 				"navigationBarBackgroundColor": "#ffdcd8"
 			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录界面",
+				"navigationBarBackgroundColor": "#aaaaff"
+			}
 		}
+
 	],
 	//全局配置
 	"globalStyle": {

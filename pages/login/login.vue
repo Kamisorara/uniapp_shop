@@ -1,0 +1,87 @@
+<template>
+	<view class="loginPage">
+		<view class="login-head" style="margin-left: 260rpx;margin-top: 150rpx;"><image style="width: 100px;height: 100px;" src="../../static/geren.png"></image></view>
+		<!-- 输入框部分 -->
+		<view class="username" style="width: 240px;margin-left: 130rpx;margin-top: 100rpx;display: flex;">
+			<text style="margin-top: 10rpx;color:darkgrey;">账号</text>
+			<u--input placeholder="请输入账号" border="bottom" clearable v-model="userInfo.username"></u--input>
+		</view>
+		<view class="password" style="width: 240px;margin-left: 130rpx;margin-top: 30rpx;display: flex;">
+			<text style="margin-top: 10rpx;color:darkgrey;">密码</text>
+			<u--input placeholder="请输入密码" border="bottom" clearable type="password" v-model="userInfo.password"></u--input>
+		</view>
+		<!-- 登录和记住我部分 -->
+		<view class="login-main" style="display: flex;">
+			<view class="rememberMe" style="margin-top: 100rpx;">
+				<u-radio-group :disabled="true" v-model="rememberMe"><u-radio shape="circle" label="记住我"></u-radio></u-radio-group>
+			</view>
+			<view class="login" style="margin-top: 80rpx;width: 100px;margin-left: 100rpx;">
+				<u-button @click="login()" text="登录" color="linear-gradient(to right, rgb(170, 255, 255), rgb(213, 132, 207))"></u-button>
+			</view>
+		</view>
+		<!-- toast弹窗 -->
+		<view><u-toast ref="uToast"></u-toast></view>
+	</view>
+</template>
+
+<script>
+import { login } from '@/common/api/login.js';
+import { setToken, removeToken } from '@/utils/token.js';
+export default {
+	name: 'login',
+	data() {
+		return {
+			//记住我
+			rememberMe: true,
+			//用户登录信息
+			userInfo: {
+				username: '',
+				password: ''
+			},
+			show: false
+		};
+	},
+	methods: {
+		//登录api调用
+		login() {
+			removeToken('token');
+			login(this.userInfo)
+				.then(res => {
+					console.log(res);
+					setToken('token', res.data.data.token);
+					if (res.data.code === 200) {
+						this.showSuccessToast();
+						setTimeout(() => {
+							uni.switchTab({
+								url: '../index/index'
+							});
+						}, 1000);
+					} else if (res.data.code === 401) {
+						this.showFileToast();
+					}
+				})
+				.catch(err => {
+					this.showFileToast();
+				});
+		},
+		//登录成功提示
+		showSuccessToast() {
+			this.$refs.uToast.show({
+				title: '登录成功',
+				type: 'success',
+				message: '登录成功，即将跳转!'
+			});
+		},
+		//登录失败提示
+		showFileToast() {
+			this.$refs.uToast.show({
+				title: '登录失败',
+				type: 'error',
+				message: '账号或密码输入错误，请重试!'
+			});
+		}
+	}
+};
+</script>
+
+<style lang="scss"></style>

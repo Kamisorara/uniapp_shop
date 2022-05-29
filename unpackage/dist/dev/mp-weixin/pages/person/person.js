@@ -93,11 +93,8 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
-    "u-Input": function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 269))
-    },
     uButton: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 275))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 277))
     }
   }
 } catch (e) {
@@ -154,7 +151,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -172,16 +169,42 @@ var _token = __webpack_require__(/*! @/utils/token.js */ 143); //
 //
 //
 //
-var _default = { data: function data() {return { userInfo: { username: '', password: '' } };
+var _default = { data: function data() {return { isLogin: false, userInfo: { username: '', password: '' } };
+
   },
   methods: {
+    //登录api调用
     login: function login() {
       (0, _token.removeToken)('token');
       (0, _login2.login)(this.userInfo).then(function (res) {
         console.log(res);
         (0, _token.setToken)('token', res.data.data.token);
       });
-    } } };exports.default = _default;
+    },
+    //登录界面
+    toLogin: function toLogin() {
+      uni.navigateTo({
+        url: '../login/login' });
+
+    },
+    //验证登录状态
+    virifyLoginStatus: function virifyLoginStatus() {var _this = this;
+      (0, _login2.virifyLogin)().
+      then(function (res) {
+        console.log(res);
+        if (res.data.code === 200) {
+          _this.isLogin = true;
+        }
+      }).
+      catch(function (err) {
+        Error(err);
+      });
+    } },
+
+  onReady: function onReady() {
+    this.virifyLoginStatus();
+  } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

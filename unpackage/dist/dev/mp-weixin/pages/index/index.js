@@ -126,7 +126,7 @@ try {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-loadmore/u-loadmore */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-loadmore/u-loadmore")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-loadmore/u-loadmore.vue */ 261))
     },
     uBackTop: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-back-top/u-back-top */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-back-top/u-back-top")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-back-top/u-back-top.vue */ 388))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-back-top/u-back-top */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-back-top/u-back-top")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-back-top/u-back-top.vue */ 269))
     }
   }
 } catch (e) {
@@ -368,7 +368,6 @@ var _shopIndex = __webpack_require__(/*! @/common/api/index/shopIndex.js */ 144)
       _this.getPageCommodities(_this.pageNum, _this.pageSize);
     }, 1000);
   },
-
   methods: {
     // （懒加载）列表
     getPageCommodities: function getPageCommodities() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (

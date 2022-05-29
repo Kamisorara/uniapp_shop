@@ -183,7 +183,6 @@ export default {
 			this.getPageCommodities(this.pageNum, this.pageSize);
 		}, 1000);
 	},
-
 	methods: {
 		// （懒加载）列表
 		async getPageCommodities() {

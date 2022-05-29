@@ -5,8 +5,8 @@
     "pages/message/message",
     "pages/cart/cart",
     "pages/person/person",
-    "pages/detail/commodityDetail",
-    "pages/commodityDetail/commodityDetail"
+    "pages/commodityDetail/commodityDetail",
+    "pages/login/login"
   ],
   "subPackages": [],
   "window": {

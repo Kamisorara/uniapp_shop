@@ -56,4 +56,10 @@ page {
   color: #ffffff;
   font-size: 12px;
 }
+.u-avatar-item {
+  margin-right: 30px;
+}
+.wrap {
+  height: 200vh;
+}
 
