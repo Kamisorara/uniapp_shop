@@ -97,16 +97,16 @@ try {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 335))
     },
     uRadioGroup: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-radio-group/u-radio-group */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-radio-group/u-radio-group")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-radio-group/u-radio-group.vue */ 495))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-radio-group/u-radio-group */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-radio-group/u-radio-group")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-radio-group/u-radio-group.vue */ 341))
     },
     uRadio: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-radio/u-radio */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-radio/u-radio")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-radio/u-radio.vue */ 473))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-radio/u-radio */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-radio/u-radio")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-radio/u-radio.vue */ 349))
     },
     uButton: function() {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 277))
     },
     uToast: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 507))
+      return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 357))
     }
   }
 } catch (e) {
@@ -190,6 +190,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _login2 = __webpack_require__(/*! @/common/api/login.js */ 171);
 var _token = __webpack_require__(/*! @/utils/token.js */ 143); //
 //
@@ -217,10 +218,13 @@ var _token = __webpack_require__(/*! @/utils/token.js */ 143); //
 //
 //
 //
-var _default = { name: 'login', data: function data() {return { //记住我
+//
+var _default = { name: 'login', data: function data() {return { //是否按下按钮
+      isClick: false, //记住我
       rememberMe: true, //用户登录信息
       userInfo: { username: '', password: '' }, show: false };}, methods: { //登录api调用
-    login: function login() {var _this = this;(0, _token.removeToken)('token');(0, _login2.login)(this.userInfo).then(function (res) {console.log(res);(0, _token.setToken)('token', res.data.data.token);if (res.data.code === 200) {_this.showSuccessToast();setTimeout(function () {uni.switchTab({ url: '../index/index' });}, 1000);
+    login: function login() {var _this = this;(0, _token.removeToken)('token');(0, _login2.login)(this.userInfo).then(function (res) {console.log(res);_this.isClick = true;(0, _token.setToken)('token', res.data.data.token);_this.showSuccessToast();if (res.data.code === 200) {setTimeout(function () {uni.switchTab({ url: '../index/index' });
+          }, 1500);
         } else if (res.data.code === 401) {
           _this.showFileToast();
         }

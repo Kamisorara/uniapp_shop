@@ -16,7 +16,8 @@
 				<u-radio-group :disabled="true" v-model="rememberMe"><u-radio shape="circle" label="记住我"></u-radio></u-radio-group>
 			</view>
 			<view class="login" style="margin-top: 80rpx;width: 100px;margin-left: 100rpx;">
-				<u-button @click="login()" text="登录" color="linear-gradient(to right, rgb(170, 255, 255), rgb(213, 132, 207))"></u-button>
+				<u-button v-show="!isClick" @click="login()" text="登录" color="linear-gradient(to right, rgb(170, 255, 255), rgb(213, 132, 207))"></u-button>
+				<u-button v-show="isClick" loading loadingText="加载中" color="linear-gradient(to right, rgb(170, 255, 255), rgb(213, 132, 207))"></u-button>
 			</view>
 		</view>
 		<!-- toast弹窗 -->
@@ -31,6 +32,8 @@ export default {
 	name: 'login',
 	data() {
 		return {
+			//是否按下按钮
+			isClick: false,
 			//记住我
 			rememberMe: true,
 			//用户登录信息
@@ -48,14 +51,15 @@ export default {
 			login(this.userInfo)
 				.then(res => {
 					console.log(res);
+					this.isClick = true;
 					setToken('token', res.data.data.token);
+					this.showSuccessToast();
 					if (res.data.code === 200) {
-						this.showSuccessToast();
 						setTimeout(() => {
 							uni.switchTab({
 								url: '../index/index'
 							});
-						}, 1000);
+						}, 1500);
 					} else if (res.data.code === 401) {
 						this.showFileToast();
 					}
