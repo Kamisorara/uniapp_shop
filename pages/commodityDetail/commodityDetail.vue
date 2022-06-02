@@ -11,7 +11,7 @@
 		<view class="shop-price" style="background-color: #ffffff;height: 60px;display: flex;">
 			<view class="prive" style="margin-top: 10px;width: 250px;margin-left: 15px;">
 				<text style="color: red;font-size: 20px;">￥</text>
-				<text style="color: red;font-weight: 600;font-size: 25px;">39999999.00</text>
+				<text style="color: red;font-weight: 600;font-size: 25px;">{{ commodityCommonDetail.price }}</text>
 			</view>
 			<view class="img1" style="margin-left: 40rpx;">
 				<image src="/static/unselected/Foreigncurrency.png" style="height: 35px;width: 35px;margin-left: 7px;"></image>
@@ -24,14 +24,16 @@
 		</view>
 		<!-- 商品名称 -->
 		<view class="commodities-name" style="background-color: #ffffff;height: 60px;border-bottom-left-radius: 12px;border-bottom-right-radius: 12px;">
-			<text style="font-size: 18px;font-weight: 700;">日本柴犬幼犬纯种豆柴活体宠物狗家养犬黑白赤柴秋田血统CKU犬舍</text>
+			<text style="font-size: 18px;font-weight: 700;">{{ commodityCommonDetail.shopName }}</text>
 		</view>
 		<!-- 活动 -->
 		<view class="avtivity" style="background-color: #ffffff;height: 60px;margin-top: 15px;display: flex;border-top-left-radius: 12px;border-top-right-radius: 12px;">
 			<view class="activity-title" style="margin-top: 15px;"><text style="font-size: 15px;font-weight: 700;">活动</text></view>
 			<view class="activity-detail" style="display: flex;margin-left: 15px;margin-top: 13px;width: 300px;">
 				<view style="width: 70px;"><u-tag text="首单专享" type="error" plain plainFill size="mini"></u-tag></view>
-				<view style="width: 430rpx;"><text style="margin-left: 15px;font-size: 13px;margin-top: 3px;">新人专属优惠,一单就回本</text></view>
+				<view style="width: 430rpx;">
+					<text style="margin-left: 15px;font-size: 13px;margin-top: 3px;">{{ commodityCommonDetail.discountNotice }}</text>
+				</view>
 			</view>
 			<view class="diliver-img" @click="shopShow = true" style="margin-top: 10px;margin-left: 20px;">
 				<image src="../../static/elipsis.png" style="width: 25px;height: 30px;"></image>
@@ -57,7 +59,7 @@
 		<view class="diliver" style="display: flex;height: 60px;background-color: #ffffff;">
 			<view class="diliver_title" @click="shopShow = true" style="margin-top: 15px;"><text style="font-size: 15px;font-weight: 700;">送至</text></view>
 			<view class="diliver_message" @click="shopShow = true" style="width: 335px;margin-top: 15px;">
-				<text style="font-size: 10px;margin-left: 15px;">室女座超星系团 银河系 太阳系 地球</text>
+				<text style="font-size: 10px;margin-left: 15px;">{{ commodityCommonDetail.addr }}</text>
 			</view>
 			<view class="diliver-img" @click="shopShow = true" style="margin-top: 10px;"><image src="../../static/elipsis.png" style="width: 25px;height: 30px;"></image></view>
 			<view>
@@ -67,18 +69,34 @@
 			</view>
 		</view>
 		<!-- 评价模块 -->
-		<view class="comment-head" style="display: flex;background-color: #ffffff;margin-top: 15px;height: 50px;border-top-left-radius: 15px;border-top-right-radius: 15px;">
-			<view class="comment-title" style="margin-left: 10px;margin-top: 10px;width: 550rpx;"><text style="font-size: 16px;font-weight: 600;">宝贝评价 999+ 条</text></view>
-			<view style="margin-top: 10px;"><text style="color: coral;">查看全部 ></text></view>
+		<!-- 有人评论 -->
+		<view class="comment-part-have" v-show="haveComment">
+			<view class="comment-head" style="display: flex;background-color: #ffffff;margin-top: 15px;height: 50px;border-top-left-radius: 15px;border-top-right-radius: 15px;">
+				<view class="comment-title" style="margin-left: 10px;margin-top: 10px;width: 550rpx;">
+					<text style="font-size: 16px;font-weight: 600;">宝贝评价 {{ commodityCommonDetail.mark }}+ 条</text>
+				</view>
+				<view style="margin-top: 10px;"><text style="color: coral;">查看全部 ></text></view>
+			</view>
+			<view class="comment-main" style="display: flex;height: 65px;background-color: #ffffff;">
+				<view class="User-headimg" style="margin-top: 10px;margin-left: 15px;"><u-avatar :src="userCommentFirst.userHead"></u-avatar></view>
+				<view class="Username" style="margin-top: 5px;margin-left: 15px;">
+					<text>{{ userCommentFirst.userName }}</text>
+				</view>
+			</view>
+			<view class="comment-detail-text" style="background-color: #ffffff;height: 40px;">
+				<text style="font-size: 15px;margin-left: 15px;">{{ userCommentFirst.userComment }}</text>
+			</view>
+			<view class="comment-detail-img" style="border-bottom:1px solid #d0d7da;display: flex;background-color: #ffffff;height: 100px;">
+				<view v-for="(item, index) in userCommentImg" :key="index">
+					<image :src="item.imgAddr" style="width: 80px;height: 80px;margin-left: 5px;border-radius: 10px;"></image>
+				</view>
+			</view>
 		</view>
-		<view class="comment-main" style="display: flex;height: 65px;background-color: #ffffff;">
-			<view class="User-headimg" style="margin-top: 10px;margin-left: 15px;"><u-avatar :src="src"></u-avatar></view>
-			<view class="Username" style="margin-top: 5px;margin-left: 15px;"><text>Ka***ra</text></view>
-		</view>
-		<view class="comment-detail-text" style="background-color: #ffffff;height: 40px;"><text style="font-size: 15px;margin-left: 15px;">终于买到了哈哈哈哈哈</text></view>
-		<view class="comment-detail-img" style="border-bottom:1px solid #d0d7da;display: flex;background-color: #ffffff;height: 100px;">
-			<view v-for="(item, index) in userCommentImg" :key="index">
-				<image :src="item.imgAddr" style="width: 80px;height: 80px;margin-left: 5px;border-radius: 10px;"></image>
+		<!-- 无人评论 -->
+		<view class="comment-part-none" style="border-bottom:1px solid #d0d7da;" v-show="!haveComment">
+			<view class="comment-head" style="display: flex;background-color: #ffffff;margin-top: 15px;height: 50px;border-top-left-radius: 15px;border-top-right-radius: 15px;">
+				<view class="comment-title" style="margin-left: 10px;margin-top: 10px;width: 550rpx;"><text style="font-size: 16px;font-weight: 600;">宝贝评价 (0)</text></view>
+				<view style="margin-top: 10px;"><text style="color: coral;">查看全部 ></text></view>
 			</view>
 		</view>
 		<!-- 问问大家  -->
@@ -108,7 +126,7 @@
 		<!-- 卖家详情 -->
 		<view class="sellerDetail" style="height: 100px;display: flex;margin-top: 20px;background-color: #ffffff;border-top-left-radius: 15px;border-top-right-radius: 15px;">
 			<view class="sellerDetail-part1" style="margin-top: 20px;margin-left: 15px;">
-				<view class="u-avatar-item"><u-avatar :src="src" shape="square" size="60"></u-avatar></view>
+				<view class="u-avatar-item"><u-avatar :src="userCommentFirst.userHead" shape="square" size="60"></u-avatar></view>
 			</view>
 			<view class="seller-name" style="margin-top: 20px;width: 350rpx;">
 				<text>Kamisroa的犬舍</text>
@@ -154,38 +172,56 @@
 </template>
 
 <script>
+import { getCommodityCommonDetail, getCommoditiesComment } from '@/common/api/detail/commoditydetail.js';
 export default {
 	name: '',
 	data() {
 		return {
+			//商品id
+			id: null,
+			//用户是否登录
 			isLogin: false,
+			//是否有用户评论
+			haveComment: false,
 			//回到顶部
 			scrollTop: 0,
 			//是否有人提问回答
 			hasAsk: true,
-			//用户头像
-			src:
-				'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201608%2F24%2F20160824122502_cUTnE.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1656342760&t=9f5863d974fee908ba697a0e622dea97',
 			//商品选择（显示控制）
 			shopShow: false,
 			value6: 0,
 			//当前页数
 			currentNum: 0,
+			//商品基本信息
+			commodityCommonDetail: {
+				id: null,
+				price: 99,
+				mark: 999,
+				discountNotice: '3元无门槛优惠券',
+				addr: '室女座超星系团 银河系 太阳系 地球',
+				shopName: '正宗螺霸王螺蛳粉广西柳州螺狮粉罗霸王速食食品官方螺丝粉旗舰店',
+				type: null,
+				mainPhoto: 'https://g-search2.alicdn.com/img/bao/uploaded/i4/i4/3015107655/O1CN01nMBnQd26Q2dAB0bf4_!!0-item_pic.jpg_580x580Q90.jpg_.webp'
+			},
 			list6: [
 				'https://gd3.alicdn.com/imgextra/i3/2911145777/O1CN015VJWDP1sXuod9bPQD_!!2911145777.jpg',
 				'https://gd1.alicdn.com/imgextra/i1/2911145777/O1CN01UBLYwu1sXuohYK10S_!!2911145777.png',
 				'https://gd4.alicdn.com/imgextra/i2/2911145777/O1CN01oChFKR1sXupWqi0qj_!!2911145777-0-picasso.jpg'
 			],
+			//用户评论图片
 			userCommentImg: [
 				{
 					id: 1,
-					imgAddr: 'https://img0.baidu.com/it/u=2279399525,1346771052&fm=253&fmt=auto&app=138&f=PNG?w=472&h=474'
-				},
-				{
-					id: 2,
-					imgAddr: 'https://img1.baidu.com/it/u=529831172,1180613810&fm=253&fmt=auto&app=120&f=JPEG?w=421&h=240'
+					imgAddr: null
 				}
-			]
+			],
+			//用户评论信息
+			userCommentFirst: {
+				id: null,
+				userComment: null,
+				userHead: null,
+				userName: null
+			}
 		};
 	},
 	//回到顶部
@@ -201,7 +237,34 @@ export default {
 		},
 		shopClose() {
 			this.shopShow = false;
+		},
+		//获取商品基本详情
+		getCommodityCommonDetails() {
+			getCommodityCommonDetail(this.id).then(res => {
+				console.log(res);
+				this.commodityCommonDetail = res.data.data;
+			});
+		},
+		//根据商品id 获取商品用户评论信息
+		getCommoditiesComments() {
+			getCommoditiesComment(this.id).then(res => {
+				console.log(res);
+				if (res.data.data.length > 0) {
+					this.haveComment = true;
+					let data = res.data.data[0];
+					this.userCommentImg = [{ imgAddr: data.picutre1 }, { imgAddr: data.picutre2 }, { imgAddr: data.picutre3 }];
+					this.userCommentFirst = data;
+				}
+			});
 		}
+	},
+	//接收url参数
+	onLoad(data) {
+		this.id = data.id;
+	},
+	onReady() {
+		this.getCommodityCommonDetails();
+		this.getCommoditiesComments();
 	}
 };
 </script>

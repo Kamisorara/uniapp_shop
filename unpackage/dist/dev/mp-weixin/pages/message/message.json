@@ -1,5 +1,8 @@
 {
   "navigationBarTitleText": "信息",
   "navigationBarBackgroundColor": "#f0eee1",
-  "usingComponents": {}
+  "usingComponents": {
+    "u-upload": "/uni_modules/uview-ui/components/u-upload/u-upload",
+    "u-button": "/uni_modules/uview-ui/components/u-button/u-button"
+  }
 }

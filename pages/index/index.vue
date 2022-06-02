@@ -40,7 +40,7 @@
 		<!-- 商品列表 -->
 		<view class="commodities-main" style="display: flex;flex-wrap: wrap;">
 			<view
-				@click="toDetail()"
+				@click="toDetail(commodity.id)"
 				v-for="(commodity, index) in commoditiesList"
 				:key="index"
 				class="commodities"
@@ -71,15 +71,19 @@
 		</view>
 		<u-loadmore :status="status" :loading-text="loadMore.loadingText" :loadmore-text="loadMore.loadmoreText" :nomore-text="loadMore.nomoreText" icon />
 		<u-back-top :scroll-top="scrollTop"></u-back-top>
+		<view><u-toast ref="uToast"></u-toast></view>
 	</view>
 </template>
 
 <script>
 import { setToken, removeToken } from '@/utils/token.js';
 import { getClassification, getRecommended, getCommodities, getAllSwiperPicture } from '@/common/api/index/shopIndex.js';
+import { virifyLogin } from '@/common/api/login.js';
 export default {
 	data() {
 		return {
+			//用户是否登录
+			isLogin: false,
 			//回到顶部
 			scrollTop: 0,
 			//page
@@ -172,6 +176,7 @@ export default {
 		this.getRecommendeds();
 		this.getPageCommodities();
 		this.getSwiper();
+		this.virifyUserLogin();
 	},
 
 	// 加载更多
@@ -224,9 +229,35 @@ export default {
 			});
 		},
 		//前往详情界面
-		toDetail() {
-			uni.navigateTo({
-				url: '../commodityDetail/commodityDetail?id=1'
+		toDetail(shopId) {
+			if (this.isLogin == true) {
+				uni.navigateTo({
+					url: '../commodityDetail/commodityDetail' + '?id=' + shopId
+				});
+			} else {
+				this.ifUserNotLoginToast();
+				setTimeout(() => {
+					uni.navigateTo({
+						url: '../login/login'
+					});
+				}, 1500);
+			}
+		},
+		//验证用户登录情况
+		virifyUserLogin() {
+			virifyLogin().then(res => {
+				console.log(res);
+				if (res.data.code === 200) {
+					this.isLogin = true;
+				}
+			});
+		},
+		//用户未登录弹窗
+		ifUserNotLoginToast() {
+			this.$refs.uToast.show({
+				title: '用户未登录，请前去登录！',
+				type: 'error',
+				message: '用户未登录，请前去登录！'
 			});
 		}
 	},
