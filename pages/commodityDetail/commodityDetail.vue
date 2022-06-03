@@ -1,9 +1,9 @@
 <template>
 	<view class="commodityDetail">
 		<view class="swiper" style="margin-top: 60rpx;">
-			<u-swiper height="500" :list="list6" @change="e => (currentNum = e.current)" :autoplay="false" indicatorStyle="right: 20px">
+			<u-swiper height="500" :list="pictureList" @change="e => (currentNum = e.current)" :autoplay="false" indicatorStyle="right: 20px">
 				<view slot="indicator" class="indicator-num">
-					<text class="indicator-num__text">{{ currentNum + 1 }}/{{ list6.length }}</text>
+					<text class="indicator-num__text">{{ currentNum + 1 }}/{{ pictureList.length }}</text>
 				</view>
 			</u-swiper>
 		</view>
@@ -107,7 +107,9 @@
 			</view>
 			<view style="display: flex;background-color: #ffffff;height: 40px;border-bottom-left-radius: 15px;border-bottom-right-radius: 15px;">
 				<view style="margin-left: 8px;"><u-tag text="问" size="mini" type="error"></u-tag></view>
-				<view style="margin-left: 10px;width: 500rpx;"><text style="font-size: 15px;">这个狗会做饭吗？</text></view>
+				<view style="margin-left: 10px;width: 500rpx;">
+					<text style="font-size: 15px;">{{ userAskList.userAsk }}</text>
+				</view>
 				<view><text style="font-size: 15px;color: #d0d7da;">1个回答</text></view>
 			</view>
 		</view>
@@ -172,7 +174,7 @@
 </template>
 
 <script>
-import { getCommodityCommonDetail, getCommoditiesComment } from '@/common/api/detail/commoditydetail.js';
+import { getCommodityCommonDetail, getCommoditiesComment, getCommoditypicture, getUserAsk } from '@/common/api/detail/commoditydetail.js';
 export default {
 	name: '',
 	data() {
@@ -186,7 +188,7 @@ export default {
 			//回到顶部
 			scrollTop: 0,
 			//是否有人提问回答
-			hasAsk: true,
+			hasAsk: false,
 			//商品选择（显示控制）
 			shopShow: false,
 			value6: 0,
@@ -203,7 +205,13 @@ export default {
 				type: null,
 				mainPhoto: 'https://g-search2.alicdn.com/img/bao/uploaded/i4/i4/3015107655/O1CN01nMBnQd26Q2dAB0bf4_!!0-item_pic.jpg_580x580Q90.jpg_.webp'
 			},
-			list6: [
+			//用户询问信息
+			userAskList: {
+				userAsk: null
+			},
+
+			//最顶上商品轮播图
+			pictureList: [
 				'https://gd3.alicdn.com/imgextra/i3/2911145777/O1CN015VJWDP1sXuod9bPQD_!!2911145777.jpg',
 				'https://gd1.alicdn.com/imgextra/i1/2911145777/O1CN01UBLYwu1sXuohYK10S_!!2911145777.png',
 				'https://gd4.alicdn.com/imgextra/i2/2911145777/O1CN01oChFKR1sXupWqi0qj_!!2911145777-0-picasso.jpg'
@@ -256,6 +264,24 @@ export default {
 					this.userCommentFirst = data;
 				}
 			});
+		},
+		//根据商品id获取对应商品图片
+		getCommoditypictures() {
+			getCommoditypicture(this.id).then(res => {
+				console.log(res);
+				this.pictureList = res.data.data;
+			});
+		},
+		//根据商品id 获取用户询问信息
+		getUserAsks() {
+			getUserAsk(this.id).then(res => {
+				console.log(res);
+				if (res.data.data.length > 0) {
+					this.hasAsk = true;
+					let data = res.data.data[0];
+					this.userAskList = data;
+				}
+			});
 		}
 	},
 	//接收url参数
@@ -265,6 +291,8 @@ export default {
 	onReady() {
 		this.getCommodityCommonDetails();
 		this.getCommoditiesComments();
+		this.getCommoditypictures();
+		this.getUserAsks();
 	}
 };
 </script>

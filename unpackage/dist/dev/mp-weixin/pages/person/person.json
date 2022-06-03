@@ -2,6 +2,10 @@
   "navigationBarTitleText": "关于我",
   "navigationBarBackgroundColor": "#f0eee1",
   "usingComponents": {
-    "u-button": "/uni_modules/uview-ui/components/u-button/u-button"
+    "u-avatar": "/uni_modules/uview-ui/components/u-avatar/u-avatar",
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
+    "u-grid": "/uni_modules/uview-ui/components/u-grid/u-grid",
+    "u-grid-item": "/uni_modules/uview-ui/components/u-grid-item/u-grid-item",
+    "u-badge": "/uni_modules/uview-ui/components/u-badge/u-badge"
   }
 }

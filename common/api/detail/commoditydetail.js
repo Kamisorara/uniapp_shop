@@ -11,3 +11,14 @@ export function getCommodityCommonDetail(id) {
 export function getCommoditiesComment(id) {
 	return request.get('/uniapp-detail/get-commodities-comment' + '?id=' + id);
 }
+
+
+//根据商品id获取对应图片
+export function getCommoditypicture(id) {
+	return request.get('/uniapp-detail/get-commodity-picture' + '?id=' + id);
+}
+
+//根据商品id 获取用户询问信息
+export function getUserAsk(id) {
+	return request.get('/uniapp-detail/get-commodity-userAsk' + '?id=' + id);
+}

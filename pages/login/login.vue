@@ -56,7 +56,7 @@ export default {
 					this.showSuccessToast();
 					if (res.data.code === 200) {
 						setTimeout(() => {
-							uni.switchTab({
+							uni.reLaunch({
 								url: '../index/index'
 							});
 						}, 1500);

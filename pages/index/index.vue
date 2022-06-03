@@ -16,7 +16,7 @@
 		<view class="photo"><u-swiper :list="swiperPicture" indicator indicatorMode="line" circular></u-swiper></view>
 		<u-sticky><u-search placeholder="请输入要查找的商品" v-model="keyword" :showAction="false" height="40"></u-search></u-sticky>
 		<u-notice-bar :text="noticeBarText"></u-notice-bar>
-		<view style="background-color: #f6faf1;border-radius: 15px; margin-top: 10px;margin-bottom: 10px;">
+		<view style="background-color: #f6faf1;border-radius: 15px; margin-top: 10px;margin-bottom: 10px;box-shadow: 00 5rpx #e2e2e2;">
 			<u-scroll-list>
 				<view class="scroll-list" style="flex-direction: row;">
 					<view class="scroll-list__goods-item" v-for="(item, index) in classification" :key="index" :class="[index === 9 && 'scroll-list__goods-item--no-margin-right']">
@@ -27,7 +27,7 @@
 			</u-scroll-list>
 		</view>
 		<!-- 推荐模块 -->
-		<view class="recommend" style="height: 440rpx;background-color: #f7f8f7;border-radius: 20px;">
+		<view class="recommend" style="height: 440rpx;background-color: #f7f8f7;border-radius: 20px;box-shadow: 00 5rpx #e2e2e2;">
 			<view>
 				<u-grid :border="false" col="4">
 					<u-grid-item v-for="(listItem, listIndex) in recommendedList" :key="listIndex">
@@ -38,7 +38,7 @@
 			</view>
 		</view>
 		<!-- 商品列表 -->
-		<view class="commodities-main" style="display: flex;flex-wrap: wrap;">
+		<view class="commodities-main" style="display: flex;flex-wrap: wrap;box-shadow: 00 5rpx #e2e2e2;">
 			<view
 				@click="toDetail(commodity.id)"
 				v-for="(commodity, index) in commoditiesList"
