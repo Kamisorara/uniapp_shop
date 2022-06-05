@@ -1,15 +1,28 @@
 <template>
-	<view class="message">
-		<text style="font-weight: 700;font-size: 30px;">测试文字识别api</text>
-		<u-upload :fileList="fileList1" @afterRead="afterRead" @delete="deletePic" name="1" multiple :maxCount="10"></u-upload>
-		<u-button @click="uploadFilePromise()" text="点击识别" color="linear-gradient(to right, rgb(170, 255, 255), rgb(213, 132, 207))"></u-button>
-		<view style="height: 300px;background-color: aquamarine;margin-top: 40px;">
-			<view>
-				<text style="font-weight: 700;font-size: 30px;">{{ words }}</text>
+	<view>
+		<view
+			v-for="(item, index) in goodsList"
+			:key="index"
+			@click="navToDetailPage(item)"
+			style="margin-top: 20rpx;background-color: #FFFFFF;border-radius: 15px;box-shadow: 00 5rpx #e2e2e2;margin-left: 8px;margin-right: 8px;"
+		>
+			<!-- 消息组件 -->
+			<view style="margin-left: 25rpx;"><image :src="item.image" style="width: 125rpx;height: 140rpx;border-radius: 50%;" mode="aspectFill"></image></view>
+			<view style="margin-top: -130rpx;margin-left: 170rpx;">
+				<text>{{ item.title }}</text>
 			</view>
+			<view style="margin-top: -45rpx;margin-left: 560rpx;">
+				<text style="color: #515151;">{{ item.time }}</text>
+			</view>
+			<view style="margin-top: 30rpx;margin-left: 170rpx;">
+				<text style="color: #515151;">{{ item.news }}</text>
+			</view>
+			<view style="margin-top: -40rpx;margin-left: 630rpx;">
+				<u-badge numberType="overflow" shape="circle" max="99" :value="item.noread" type="error" :absolute="true" :showZero="false"></u-badge>
+			</view>
+			<!-- 分割线 -->
+			<view style="margin-top: 60rpx;"><u-divider lineColor="#7A9BFD"></u-divider></view>
 		</view>
-
-		<image src="" mode=""></image>
 	</view>
 </template>
 
@@ -17,60 +30,32 @@
 export default {
 	data() {
 		return {
-			fileList1: [],
-			words: '请点击文字识别'
+			goodsList: [
+				{
+					image:
+						'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201608%2F24%2F20160824122502_cUTnE.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1656342760&t=9f5863d974fee908ba697a0e622dea97',
+					title: 'Kamisora的犬舍',
+					time: '2022-6-3',
+					news: '这是一条消息',
+					noread: 100
+				},
+				{
+					image:
+						'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201608%2F24%2F20160824122502_cUTnE.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1656342760&t=9f5863d974fee908ba697a0e622dea97',
+					title: '老八小hang堡',
+					time: '2022-6-2',
+					news: '这是一条消息',
+					noread: 0
+				}
+			]
 		};
 	},
-	methods: {
-		// 删除图片
-		deletePic(event) {
-			this[`fileList${event.name}`].splice(event.index, 1);
-		},
-		// 新增图片
-		async afterRead(event) {
-			// 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-			let lists = [].concat(event.file);
-			let fileListLen = this[`fileList${event.name}`].length;
-			lists.map(item => {
-				this[`fileList${event.name}`].push({
-					...item,
-					status: 'uploading',
-					message: '上传中'
-				});
-			});
-			for (let i = 0; i < lists.length; i++) {
-				const result = await this.uploadFilePromise(lists[i].url);
-				let item = this[`fileList${event.name}`][fileListLen];
-				this[`fileList${event.name}`].splice(
-					fileListLen,
-					1,
-					Object.assign(item, {
-						status: 'success',
-						message: '',
-						url: result
-					})
-				);
-				fileListLen++;
-			}
-		},
-		uploadFilePromise(url) {
-			return new Promise((resolve, reject) => {
-				let a = uni.uploadFile({
-					url: 'http://192.168.31.174:8081/test-ai',
-					filePath: url,
-					name: 'file',
-					formData: {
-						file: 'test'
-					},
-					success: res => {
-						console.log(res);
-						this.words = res.data;
-					}
-				});
-			});
-		}
-	}
+	methods: {}
 };
 </script>
 
-<style></style>
+<style lang="scss">
+page {
+	background-color: #f4f4f4;
+}
+</style>

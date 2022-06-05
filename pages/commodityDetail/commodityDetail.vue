@@ -49,21 +49,65 @@
 				<text style="font-size: 10px;margin-left: 15px;">独一无二天下无敌你怎么样也买不起的 柴犬</text>
 			</view>
 			<view class="shop-img" @click="shopShow = true" style="margin-top: 10px;"><image src="../../static/elipsis.png" style="width: 25px;height: 30px;"></image></view>
+			<!-- 隐藏栏 -->
 			<view>
 				<u-popup :show="shopShow" @close="shopClose" @open="shopOpen">
-					<view style="height: 780rpx;background-color: #ffffff;"><text>独一无二天下无敌你怎么样也买不起的 柴犬</text></view>
+					<view style="height: 1300rpx;background-color: #ffffff;">
+						<view class="shop-choose-head" style="display: flex;border-bottom:1px solid #d0d7da;">
+							<view style="margin-top: 10px;margin-right: 10px;height: 200rpx;width: 200rpx;">
+								<image :src="shopChooseList[0].shopImg" style="width: 150rpx;height: 150rpx;padding-left: 10px;padding-top: 10px;"></image>
+							</view>
+							<view style="margin-top: 20px;width: 470rpx;">
+								<text style="font-size: 18px;color: red;font-weight: 600;">￥</text>
+								<text style="font-size: 25px;font-weight: 700;color: red;">{{ shopChooseList[0].price }}</text>
+							</view>
+							<view style="margin-top: 10px;"><u-icon @click="shopClose()" name="close-circle" color="#000000" size="21"></u-icon></view>
+						</view>
+						<!-- 商品分类选择 -->
+						<view class="shop-choose" style="height: 800rpx;border-bottom:1px solid #d0d7da;">
+							<view class="shop-choose-main">
+								<view style="margin-top: 20rpx;padding-left: 20rpx;">
+									<text style="font-size: 16px;font-weight: 600;">商品选择({{ shopChooseList.length }})</text>
+								</view>
+							</view>
+							<view style="display: flex;">
+								<!-- 单个商品详情 -->
+								<view
+									v-for="(item, index) in shopChooseList"
+									:key="index"
+									class="shop-main"
+									style="border-radius: 10px;height: 300rpx;width: 230rpx;margin-left: 15rpx;margin-top: 20rpx;border:1px solid #999999"
+								>
+									<image :src="shopChooseList[0].shopImg" style="height: 200rpx;width: 230rpx;"></image>
+									<view style="background-color: #f1f8f9;height: 90rpx;margin-top:5rpx;border-radius: 7px;display: flex;flex-flow: column;">
+										<text style="font-size: 13px;margin-top: 5px;margin-left: 5px;color: darkgray;">{{ shopChooseList[0].titile }}</text>
+										<text style="font-size: 10px;margin-left: 5px;color: darkgray;">￥ {{ shopChooseList[0].price }}</text>
+									</view>
+								</view>
+							</view>
+						</view>
+						<view class="buy-num" style="display: flex;">
+							<view style="margin-top: 10px;width: 520rpx;">
+								<text style="margin-left: 10px;">购买数量</text>
+								<text style="font-size: 10px;margin-left: 8px;  color: darkgray;">有货</text>
+							</view>
+							<view style="margin-top:  8px;"><u-number-box v-model="buyNum"></u-number-box></view>
+						</view>
+						<view class="add-to-cart" style="margin-top: 30px;"><u-button type="warning " shape="circle" text="添加至购物车"></u-button></view>
+					</view>
 				</u-popup>
 			</view>
 		</view>
 		<!-- 配送 -->
 		<view class="diliver" style="display: flex;height: 60px;background-color: #ffffff;">
-			<view class="diliver_title" @click="shopShow = true" style="margin-top: 15px;"><text style="font-size: 15px;font-weight: 700;">送至</text></view>
-			<view class="diliver_message" @click="shopShow = true" style="width: 335px;margin-top: 15px;">
+			<view class="diliver_title" @click="deliverShow = true" style="margin-top: 15px;"><text style="font-size: 15px;font-weight: 700;">送至</text></view>
+			<view class="diliver_message" @click="deliverShow = true" style="width: 335px;margin-top: 15px;">
 				<text style="font-size: 10px;margin-left: 15px;">{{ commodityCommonDetail.addr }}</text>
 			</view>
-			<view class="diliver-img" @click="shopShow = true" style="margin-top: 10px;"><image src="../../static/elipsis.png" style="width: 25px;height: 30px;"></image></view>
+			<view class="diliver-img" @click="deliverShow = true" style="margin-top: 10px;"><image src="../../static/elipsis.png" style="width: 25px;height: 30px;"></image></view>
+			<!-- 隐藏栏 -->
 			<view>
-				<u-popup :show="shopShow" @close="shopClose" @open="shopOpen">
+				<u-popup :show="deliverShow" @close="deliverClose" @open="shopOpen">
 					<view style="height: 780rpx;background-color: #ffffff;"><text>请选择配送地址</text></view>
 				</u-popup>
 			</view>
@@ -191,6 +235,8 @@ export default {
 			hasAsk: false,
 			//商品选择（显示控制）
 			shopShow: false,
+			//配送地址选择
+			deliverShow: false,
 			value6: 0,
 			//当前页数
 			currentNum: 0,
@@ -205,11 +251,33 @@ export default {
 				type: null,
 				mainPhoto: 'https://g-search2.alicdn.com/img/bao/uploaded/i4/i4/3015107655/O1CN01nMBnQd26Q2dAB0bf4_!!0-item_pic.jpg_580x580Q90.jpg_.webp'
 			},
+			//选择商品购买数量
+			buyNum: 0,
+			//商品选择列表
+			shopChooseList: [
+				{
+					id: 1,
+					titile: '商品1号',
+					price: 10.0,
+					shopImg: 'https://g-search2.alicdn.com/img/bao/uploaded/i4/i4/702704362/O1CN01ZpS8mo1i5qOJ41NLx_!!0-item_pic.jpg_580x580Q90.jpg_.webp'
+				},
+				{
+					id: 1,
+					titile: '商品1号',
+					price: 10.0,
+					shopImg: 'https://g-search2.alicdn.com/img/bao/uploaded/i4/i4/702704362/O1CN01ZpS8mo1i5qOJ41NLx_!!0-item_pic.jpg_580x580Q90.jpg_.webp'
+				},
+				{
+					id: 1,
+					titile: '商品1号',
+					price: 10.0,
+					shopImg: 'https://g-search2.alicdn.com/img/bao/uploaded/i4/i4/702704362/O1CN01ZpS8mo1i5qOJ41NLx_!!0-item_pic.jpg_580x580Q90.jpg_.webp'
+				}
+			],
 			//用户询问信息
 			userAskList: {
 				userAsk: null
 			},
-
 			//最顶上商品轮播图
 			pictureList: [
 				'https://gd3.alicdn.com/imgextra/i3/2911145777/O1CN015VJWDP1sXuod9bPQD_!!2911145777.jpg',
@@ -243,8 +311,13 @@ export default {
 		shopOpen() {
 			console.log('商品选择打开了组件');
 		},
+		//关闭商品选择栏
 		shopClose() {
 			this.shopShow = false;
+		},
+		//关闭配送选择栏
+		deliverClose() {
+			this.deliverShow = false;
 		},
 		//获取商品基本详情
 		getCommodityCommonDetails() {

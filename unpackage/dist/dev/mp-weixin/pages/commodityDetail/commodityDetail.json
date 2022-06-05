@@ -5,12 +5,13 @@
     "u-swiper": "/uni_modules/uview-ui/components/u-swiper/u-swiper",
     "u-tag": "/uni_modules/uview-ui/components/u-tag/u-tag",
     "u-popup": "/uni_modules/uview-ui/components/u-popup/u-popup",
-    "u-avatar": "/uni_modules/uview-ui/components/u-avatar/u-avatar",
     "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
+    "u-number-box": "/uni_modules/uview-ui/components/u-number-box/u-number-box",
+    "u-button": "/uni_modules/uview-ui/components/u-button/u-button",
+    "u-avatar": "/uni_modules/uview-ui/components/u-avatar/u-avatar",
     "u-divider": "/uni_modules/uview-ui/components/u-divider/u-divider",
     "u-tabbar": "/uni_modules/uview-ui/components/u-tabbar/u-tabbar",
     "u-tabbar-item": "/uni_modules/uview-ui/components/u-tabbar-item/u-tabbar-item",
-    "u-button": "/uni_modules/uview-ui/components/u-button/u-button",
     "u-back-top": "/uni_modules/uview-ui/components/u-back-top/u-back-top"
   }
 }

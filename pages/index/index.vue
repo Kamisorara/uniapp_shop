@@ -56,7 +56,7 @@
 					<text>{{ commodity.shopName }}</text>
 				</view>
 				<view class="" style="display: flex;">
-					<view class="" style="display: flex;">
+					<view class="" style="display: flex;width: 300rpx;">
 						<view class="" style="color: #ff0000;font-weight: 600;font-size: 20px;">
 							<text>￥</text>
 							<text>{{ commodity.price }}</text>

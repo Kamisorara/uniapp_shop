@@ -27,3 +27,8 @@ export function getCommodities(pageNum, pageSize) {
 export function getAllSwiperPicture() {
 	return request.get('/uni-shop/index/getSwiperPicture');
 }
+
+//获取商品分类
+export function getCategory(id) {
+	return request.get('/uni-shop/index/getClassificationDetail' + '?id=' + id);
+}

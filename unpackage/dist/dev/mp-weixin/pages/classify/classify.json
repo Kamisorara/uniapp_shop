@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "商品分类",
   "navigationBarBackgroundColor": "#f0eee1",
-  "usingComponents": {}
+  "usingComponents": {
+    "u-empty": "/uni_modules/uview-ui/components/u-empty/u-empty"
+  }
 }
