@@ -80,10 +80,10 @@ var components
 try {
   components = {
     uColumnNotice: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-column-notice/u-column-notice */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-column-notice/u-column-notice")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-column-notice/u-column-notice.vue */ 409))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-column-notice/u-column-notice */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-column-notice/u-column-notice")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-column-notice/u-column-notice.vue */ 417))
     },
     uRowNotice: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-row-notice/u-row-notice */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-row-notice/u-row-notice")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-row-notice/u-row-notice.vue */ 417))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-row-notice/u-row-notice */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-row-notice/u-row-notice")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-row-notice/u-row-notice.vue */ 425))
     }
   }
 } catch (e) {

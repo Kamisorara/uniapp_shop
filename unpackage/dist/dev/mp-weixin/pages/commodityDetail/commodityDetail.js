@@ -108,10 +108,10 @@ try {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 265))
     },
     uNumberBox: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-number-box/u-number-box */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-number-box/u-number-box")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-number-box/u-number-box.vue */ 555))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-number-box/u-number-box */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-number-box/u-number-box")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-number-box/u-number-box.vue */ 345))
     },
     uButton: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 361))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 353))
     },
     uAvatar: function() {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-avatar/u-avatar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-avatar/u-avatar")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-avatar/u-avatar.vue */ 321))
@@ -120,10 +120,10 @@ try {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-divider/u-divider */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-divider/u-divider")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-divider/u-divider.vue */ 313))
     },
     uTabbar: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabbar/u-tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabbar/u-tabbar")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabbar/u-tabbar.vue */ 345))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabbar/u-tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabbar/u-tabbar")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabbar/u-tabbar.vue */ 363))
     },
     uTabbarItem: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabbar-item/u-tabbar-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabbar-item/u-tabbar-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabbar-item/u-tabbar-item.vue */ 353))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabbar-item/u-tabbar-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabbar-item/u-tabbar-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabbar-item/u-tabbar-item.vue */ 371))
     },
     uBackTop: function() {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-back-top/u-back-top */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-back-top/u-back-top")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-back-top/u-back-top.vue */ 282))
@@ -221,6 +221,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
 
 
 
@@ -659,6 +660,7 @@ var _commoditydetail = __webpack_require__(/*! @/common/api/detail/commoditydeta
 //
 //
 //
+//
 var _default = { name: '', data: function data() {return { //商品id
       id: null, //用户是否登录
       isLogin: false, //是否有用户评论
@@ -669,8 +671,9 @@ var _default = { name: '', data: function data() {return { //商品id
       deliverShow: false, value6: 0, //当前页数
       currentNum: 0, //商品基本信息
       commodityCommonDetail: { id: null, price: 99, mark: 999, discountNotice: '3元无门槛优惠券', addr: '室女座超星系团 银河系 太阳系 地球', shopName: '正宗螺霸王螺蛳粉广西柳州螺狮粉罗霸王速食食品官方螺丝粉旗舰店', type: null, mainPhoto: 'https://g-search2.alicdn.com/img/bao/uploaded/i4/i4/3015107655/O1CN01nMBnQd26Q2dAB0bf4_!!0-item_pic.jpg_580x580Q90.jpg_.webp' }, //选择商品购买数量
-      buyNum: 0, //商品选择列表
-      shopChooseList: [{ id: 1, titile: '商品1号', price: 10.0, shopImg: 'https://g-search2.alicdn.com/img/bao/uploaded/i4/i4/702704362/O1CN01ZpS8mo1i5qOJ41NLx_!!0-item_pic.jpg_580x580Q90.jpg_.webp' }, { id: 1, titile: '商品1号', price: 10.0, shopImg: 'https://g-search2.alicdn.com/img/bao/uploaded/i4/i4/702704362/O1CN01ZpS8mo1i5qOJ41NLx_!!0-item_pic.jpg_580x580Q90.jpg_.webp' }, { id: 1, titile: '商品1号', price: 10.0, shopImg: 'https://g-search2.alicdn.com/img/bao/uploaded/i4/i4/702704362/O1CN01ZpS8mo1i5qOJ41NLx_!!0-item_pic.jpg_580x580Q90.jpg_.webp' }], //用户询问信息
+      buyNum: 0, //当前选择的商品
+      currentChoose: { shopImg: 'https://g-search3.alicdn.com/img/bao/uploaded/i4/i4/3015107655/O1CN01nMBnQd26Q2dAB0bf4_!!0-item_pic.jpg_580x580Q90.jpg_.webp', shopPrice: 10.0, shopTitle: null }, //商品选择列表
+      shopChooseList: [{ id: 1, shopName: '', shopPrice: null, shopImg: 'https://img.alicdn.com/imgextra/i1/6000000007687/O1CN01Wiamsi26eh7UI5Hdz_!!6000000007687-0-at.jpg_430x430q90.jpg' }], //用户询问信息
       userAskList: { userAsk: null }, //最顶上商品轮播图
       pictureList: ['https://gd3.alicdn.com/imgextra/i3/2911145777/O1CN015VJWDP1sXuod9bPQD_!!2911145777.jpg', 'https://gd1.alicdn.com/imgextra/i1/2911145777/O1CN01UBLYwu1sXuohYK10S_!!2911145777.png', 'https://gd4.alicdn.com/imgextra/i2/2911145777/O1CN01oChFKR1sXupWqi0qj_!!2911145777-0-picasso.jpg'], //用户评论图片
       userCommentImg: [{ id: 1, imgAddr: null }], //用户评论信息
@@ -681,8 +684,10 @@ var _default = { name: '', data: function data() {return { //商品id
     getCommodityCommonDetails: function getCommodityCommonDetails() {var _this = this;(0, _commoditydetail.getCommodityCommonDetail)(this.id).then(function (res) {console.log(res);_this.commodityCommonDetail = res.data.data;});}, //根据商品id 获取商品用户评论信息
     getCommoditiesComments: function getCommoditiesComments() {var _this2 = this;(0, _commoditydetail.getCommoditiesComment)(this.id).then(function (res) {console.log(res);if (res.data.data.length > 0) {_this2.haveComment = true;var data = res.data.data[0];_this2.userCommentImg = [{ imgAddr: data.picutre1 }, { imgAddr: data.picutre2 }, { imgAddr: data.picutre3 }];_this2.userCommentFirst = data;}});}, //根据商品id获取对应商品图片
     getCommoditypictures: function getCommoditypictures() {var _this3 = this;(0, _commoditydetail.getCommoditypicture)(this.id).then(function (res) {console.log(res);_this3.pictureList = res.data.data;});}, //根据商品id 获取用户询问信息
-    getUserAsks: function getUserAsks() {var _this4 = this;(0, _commoditydetail.getUserAsk)(this.id).then(function (res) {console.log(res);if (res.data.data.length > 0) {_this4.hasAsk = true;var data = res.data.data[0];_this4.userAskList = data;}});} }, //接收url参数
-  onLoad: function onLoad(data) {this.id = data.id;}, onReady: function onReady() {this.getCommodityCommonDetails();this.getCommoditiesComments();this.getCommoditypictures();this.getUserAsks();} };exports.default = _default;
+    getUserAsks: function getUserAsks() {var _this4 = this;(0, _commoditydetail.getUserAsk)(this.id).then(function (res) {console.log(res);if (res.data.data.length > 0) {_this4.hasAsk = true;var data = res.data.data[0];_this4.userAskList = data;}});}, //商品选择界面，切换当前选择商品
+    changeCurrentShop: function changeCurrentShop(index) {var tempData = this.shopChooseList[index];this.currentChoose.shopImg = tempData.shopImg;this.currentChoose.shopPrice = tempData.shopPrice;this.currentChoose.shopTitle = tempData.shopName;}, //获取获取商品库存信息
+    getCommodityInventory: function getCommodityInventory() {var _this5 = this;(0, _commoditydetail.getInventory)(this.id).then(function (res) {console.log(res);_this5.shopChooseList = res.data.data;});} }, //接收url参数
+  onLoad: function onLoad(data) {this.id = data.id;}, onReady: function onReady() {this.getCommodityCommonDetails();this.getCommoditiesComments();this.getCommoditypictures();this.getUserAsks();this.getCommodityInventory();} };exports.default = _default;
 
 /***/ }),
 

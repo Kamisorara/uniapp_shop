@@ -11,7 +11,7 @@
 		<view class="shop-price" style="background-color: #ffffff;height: 60px;display: flex;">
 			<view class="prive" style="margin-top: 10px;width: 250px;margin-left: 15px;">
 				<text style="color: red;font-size: 20px;">￥</text>
-				<text style="color: red;font-weight: 600;font-size: 25px;">{{ commodityCommonDetail.price }}</text>
+				<text style="color: red;font-weight: 600;font-size: 25px;">{{ currentChoose.shopPrice }}</text>
 			</view>
 			<view class="img1" style="margin-left: 40rpx;">
 				<image src="/static/unselected/Foreigncurrency.png" style="height: 35px;width: 35px;margin-left: 7px;"></image>
@@ -46,7 +46,7 @@
 		>
 			<view class="shop_title" @click="shopShow = true" style="margin-top: 15px;"><text style="font-size: 15px;font-weight: 700;">已选</text></view>
 			<view class="shop_message" @click="shopShow = true" style="width: 335px;margin-top: 15px;">
-				<text style="font-size: 10px;margin-left: 15px;">独一无二天下无敌你怎么样也买不起的 柴犬</text>
+				<text style="font-size: 10px;margin-left: 15px;">{{ currentChoose.shopTitle }}</text>
 			</view>
 			<view class="shop-img" @click="shopShow = true" style="margin-top: 10px;"><image src="../../static/elipsis.png" style="width: 25px;height: 30px;"></image></view>
 			<!-- 隐藏栏 -->
@@ -55,11 +55,11 @@
 					<view style="height: 1300rpx;background-color: #ffffff;">
 						<view class="shop-choose-head" style="display: flex;border-bottom:1px solid #d0d7da;">
 							<view style="margin-top: 10px;margin-right: 10px;height: 200rpx;width: 200rpx;">
-								<image :src="shopChooseList[0].shopImg" style="width: 150rpx;height: 150rpx;padding-left: 10px;padding-top: 10px;"></image>
+								<image :src="currentChoose.shopImg" style="width: 150rpx;height: 150rpx;padding-left: 10px;padding-top: 10px;"></image>
 							</view>
 							<view style="margin-top: 20px;width: 470rpx;">
 								<text style="font-size: 18px;color: red;font-weight: 600;">￥</text>
-								<text style="font-size: 25px;font-weight: 700;color: red;">{{ shopChooseList[0].price }}</text>
+								<text style="font-size: 25px;font-weight: 700;color: red;">{{ currentChoose.shopPrice }}</text>
 							</view>
 							<view style="margin-top: 10px;"><u-icon @click="shopClose()" name="close-circle" color="#000000" size="21"></u-icon></view>
 						</view>
@@ -73,15 +73,16 @@
 							<view style="display: flex;">
 								<!-- 单个商品详情 -->
 								<view
+									@click="changeCurrentShop(index)"
 									v-for="(item, index) in shopChooseList"
 									:key="index"
 									class="shop-main"
 									style="border-radius: 10px;height: 300rpx;width: 230rpx;margin-left: 15rpx;margin-top: 20rpx;border:1px solid #999999"
 								>
-									<image :src="shopChooseList[0].shopImg" style="height: 200rpx;width: 230rpx;"></image>
+									<image :src="item.shopImg" style="height: 200rpx;width: 230rpx;"></image>
 									<view style="background-color: #f1f8f9;height: 90rpx;margin-top:5rpx;border-radius: 7px;display: flex;flex-flow: column;">
-										<text style="font-size: 13px;margin-top: 5px;margin-left: 5px;color: darkgray;">{{ shopChooseList[0].titile }}</text>
-										<text style="font-size: 10px;margin-left: 5px;color: darkgray;">￥ {{ shopChooseList[0].price }}</text>
+										<text style="font-size: 13px;margin-top: 5px;margin-left: 5px;color: darkgray;">{{ item.shopName }}</text>
+										<text style="font-size: 10px;margin-left: 5px;color: darkgray;">￥ {{ item.shopPrice }}</text>
 									</view>
 								</view>
 							</view>
@@ -218,7 +219,7 @@
 </template>
 
 <script>
-import { getCommodityCommonDetail, getCommoditiesComment, getCommoditypicture, getUserAsk } from '@/common/api/detail/commoditydetail.js';
+import { getCommodityCommonDetail, getCommoditiesComment, getCommoditypicture, getUserAsk, getInventory } from '@/common/api/detail/commoditydetail.js';
 export default {
 	name: '',
 	data() {
@@ -253,25 +254,19 @@ export default {
 			},
 			//选择商品购买数量
 			buyNum: 0,
+			//当前选择的商品
+			currentChoose: {
+				shopImg: 'https://g-search3.alicdn.com/img/bao/uploaded/i4/i4/3015107655/O1CN01nMBnQd26Q2dAB0bf4_!!0-item_pic.jpg_580x580Q90.jpg_.webp',
+				shopPrice: 10.0,
+				shopTitle: null
+			},
 			//商品选择列表
 			shopChooseList: [
 				{
 					id: 1,
-					titile: '商品1号',
-					price: 10.0,
-					shopImg: 'https://g-search2.alicdn.com/img/bao/uploaded/i4/i4/702704362/O1CN01ZpS8mo1i5qOJ41NLx_!!0-item_pic.jpg_580x580Q90.jpg_.webp'
-				},
-				{
-					id: 1,
-					titile: '商品1号',
-					price: 10.0,
-					shopImg: 'https://g-search2.alicdn.com/img/bao/uploaded/i4/i4/702704362/O1CN01ZpS8mo1i5qOJ41NLx_!!0-item_pic.jpg_580x580Q90.jpg_.webp'
-				},
-				{
-					id: 1,
-					titile: '商品1号',
-					price: 10.0,
-					shopImg: 'https://g-search2.alicdn.com/img/bao/uploaded/i4/i4/702704362/O1CN01ZpS8mo1i5qOJ41NLx_!!0-item_pic.jpg_580x580Q90.jpg_.webp'
+					shopName: '',
+					shopPrice: null,
+					shopImg: 'https://img.alicdn.com/imgextra/i1/6000000007687/O1CN01Wiamsi26eh7UI5Hdz_!!6000000007687-0-at.jpg_430x430q90.jpg'
 				}
 			],
 			//用户询问信息
@@ -355,6 +350,20 @@ export default {
 					this.userAskList = data;
 				}
 			});
+		},
+		//商品选择界面，切换当前选择商品
+		changeCurrentShop(index) {
+			let tempData = this.shopChooseList[index];
+			this.currentChoose.shopImg = tempData.shopImg;
+			this.currentChoose.shopPrice = tempData.shopPrice;
+			this.currentChoose.shopTitle = tempData.shopName;
+		},
+		//获取获取商品库存信息
+		getCommodityInventory() {
+			getInventory(this.id).then(res => {
+				console.log(res);
+				this.shopChooseList = res.data.data;
+			});
 		}
 	},
 	//接收url参数
@@ -366,6 +375,7 @@ export default {
 		this.getCommoditiesComments();
 		this.getCommoditypictures();
 		this.getUserAsks();
+		this.getCommodityInventory();
 	}
 };
 </script>

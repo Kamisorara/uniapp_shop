@@ -22,3 +22,8 @@ export function getCommoditypicture(id) {
 export function getUserAsk(id) {
 	return request.get('/uniapp-detail/get-commodity-userAsk' + '?id=' + id);
 }
+
+//根据商品id 获取商品库存信息
+export function getInventory(id) {
+	return request.get('/uniapp-detail/get-commodity-inventory' + '?id=' + id);
+}

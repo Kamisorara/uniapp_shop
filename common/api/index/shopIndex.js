@@ -32,3 +32,5 @@ export function getAllSwiperPicture() {
 export function getCategory(id) {
 	return request.get('/uni-shop/index/getClassificationDetail' + '?id=' + id);
 }
+
+
