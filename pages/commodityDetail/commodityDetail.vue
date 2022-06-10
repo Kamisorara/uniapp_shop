@@ -11,7 +11,7 @@
 		<view class="shop-price" style="background-color: #ffffff;height: 60px;display: flex;">
 			<view class="prive" style="margin-top: 10px;width: 250px;margin-left: 15px;">
 				<text style="color: red;font-size: 20px;">￥</text>
-				<text style="color: red;font-weight: 600;font-size: 25px;">{{ currentChoose.shopPrice }}</text>
+				<text style="color: red;font-weight: 600;font-size: 25px;">{{ shopChooseList[0].shopPrice }}</text>
 			</view>
 			<view class="img1" style="margin-left: 40rpx;">
 				<image src="/static/unselected/Foreigncurrency.png" style="height: 35px;width: 35px;margin-left: 7px;"></image>

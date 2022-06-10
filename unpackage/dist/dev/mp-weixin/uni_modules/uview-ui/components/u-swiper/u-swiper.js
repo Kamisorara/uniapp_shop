@@ -127,10 +127,14 @@ var render = function() {
         var m3 = m2 === "video" ? _vm.getSource(item) : null
         var m4 = m2 === "video" ? _vm.getPoster(item) : null
         var g8 =
-          m2 === "video" ? _vm.showTitle && _vm.$u.test.object(item) : null
-        var g9 = _vm.showTitle && _vm.$u.test.object(item)
-        var g10 =
-          item.g9 && item.title && _vm.$u.test.image(_vm.getSource(item))
+          m2 === "video"
+            ? _vm.showTitle && _vm.$u.test.object(item) && item.title
+            : null
+        var g9 =
+          _vm.showTitle &&
+          _vm.$u.test.object(item) &&
+          item.title &&
+          _vm.$u.test.image(_vm.getSource(item))
         return {
           $orig: $orig,
           s0: s0,
@@ -143,8 +147,7 @@ var render = function() {
           m3: m3,
           m4: m4,
           g8: g8,
-          g9: g9,
-          g10: g10
+          g9: g9
         }
       })
     : null

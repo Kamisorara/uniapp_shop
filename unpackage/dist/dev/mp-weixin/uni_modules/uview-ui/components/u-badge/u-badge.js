@@ -81,11 +81,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var m0 = (Number(_vm.value) === 0 ? _vm.showZero : true) || _vm.isDot
-  var s0 =
-    _vm.show && m0
-      ? _vm.__get_style([_vm.$u.addStyle(_vm.customStyle), _vm.badgeStyle])
-      : null
+  var m0 =
+    _vm.show && ((Number(_vm.value) === 0 ? _vm.showZero : true) || _vm.isDot)
+  var s0 = m0
+    ? _vm.__get_style([_vm.$u.addStyle(_vm.customStyle), _vm.badgeStyle])
+    : null
   _vm.$mp.data = Object.assign(
     {},
     {
