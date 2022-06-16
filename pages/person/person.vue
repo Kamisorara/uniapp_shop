@@ -150,6 +150,9 @@ export default {
 	},
 	onReady() {
 		this.virifyLoginStatus();
+	},
+	onShow() {
+		this.virifyLoginStatus();
 	}
 };
 </script>

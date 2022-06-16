@@ -433,11 +433,15 @@ var _login = __webpack_require__(/*! @/common/api/login.js */ 145);function _int
     },
     //验证用户登录情况
     virifyUserLogin: function virifyUserLogin() {var _this6 = this;
-      (0, _login.virifyLogin)().then(function (res) {
+      (0, _login.virifyLogin)().
+      then(function (res) {
         console.log(res);
         if (res.data.code === 200) {
           _this6.isLogin = true;
         }
+      }).
+      catch(function (err) {
+        (0, _token.removeToken)('token');
       });
     },
     //用户未登录弹窗

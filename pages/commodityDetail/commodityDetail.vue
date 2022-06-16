@@ -94,7 +94,9 @@
 							</view>
 							<view style="margin-top:  8px;"><u-number-box v-model="buyNum"></u-number-box></view>
 						</view>
-						<view class="add-to-cart" style="margin-top: 30px;"><u-button type="warning " shape="circle" text="添加至购物车"></u-button></view>
+						<view class="add-to-cart" style="margin-top: 30px;">
+							<u-button @click="putCommodityToCart()" type="warning " shape="circle" text="添加至购物车"></u-button>
+						</view>
 					</view>
 				</u-popup>
 			</view>
@@ -203,6 +205,8 @@
 		</view>
 		<!-- 分隔符 -->
 		<u-divider text="宝贝详情"></u-divider>
+		<!-- toast弹窗 -->
+		<view><u-toast ref="uToast"></u-toast></view>
 		<!-- 底部栏 -->
 		<view class="bottom-tabbar">
 			<u-tabbar :value="value6" :round="10" @change="name => (value6 = name)" :fixed="true" :placeholder="true" :safeAreaInsetBottom="true">
@@ -219,7 +223,8 @@
 </template>
 
 <script>
-import { getCommodityCommonDetail, getCommoditiesComment, getCommoditypicture, getUserAsk, getInventory } from '@/common/api/detail/commoditydetail.js';
+import { getCommodityCommonDetail, getCommoditiesComment, getCommoditypicture, getUserAsk, getInventory, postCommodityToCart } from '@/common/api/detail/commoditydetail.js';
+import { virifyLogin } from '@/common/api/login.js';
 export default {
 	name: '',
 	data() {
@@ -228,6 +233,11 @@ export default {
 			id: null,
 			//用户是否登录
 			isLogin: false,
+			//用户详情
+			userInfo: {
+				id: '',
+				userName: ''
+			},
 			//是否有用户评论
 			haveComment: false,
 			//回到顶部
@@ -256,6 +266,7 @@ export default {
 			buyNum: 0,
 			//当前选择的商品
 			currentChoose: {
+				id: '',
 				shopImg: 'https://g-search3.alicdn.com/img/bao/uploaded/i4/i4/3015107655/O1CN01nMBnQd26Q2dAB0bf4_!!0-item_pic.jpg_580x580Q90.jpg_.webp',
 				shopPrice: 10.0,
 				shopTitle: null
@@ -354,6 +365,7 @@ export default {
 		//商品选择界面，切换当前选择商品
 		changeCurrentShop(index) {
 			let tempData = this.shopChooseList[index];
+			this.currentChoose.id = tempData.id;
 			this.currentChoose.shopImg = tempData.shopImg;
 			this.currentChoose.shopPrice = tempData.shopPrice;
 			this.currentChoose.shopTitle = tempData.shopName;
@@ -363,6 +375,46 @@ export default {
 			getInventory(this.id).then(res => {
 				console.log(res);
 				this.shopChooseList = res.data.data;
+			});
+		},
+		//获取用户id
+		getUserInfo() {
+			virifyLogin().then(res => {
+				console.log(res);
+				this.userInfo.id = res.data.data[0];
+				this.userInfo.userName = res.data.data[1];
+			});
+		},
+		//添加商品至购物车
+		putCommodityToCart() {
+			this.shopClose();
+			postCommodityToCart(this.userInfo.id, this.currentChoose.id)
+				.then(res => {
+					console.log(res);
+					if (res.data.code === 200) {
+						this.showSuccessToast();
+					} else if (res.data.code === 400) {
+						this.showFileToast();
+					}
+				})
+				.catch(err => {
+					this.showFileToast();
+				});
+		},
+		//登录成功提示
+		showSuccessToast() {
+			this.$refs.uToast.show({
+				title: '添加购物车成功',
+				type: 'success',
+				message: '添加购物车成功!'
+			});
+		},
+		//登录失败提示
+		showFileToast() {
+			this.$refs.uToast.show({
+				title: '添加购物车失败',
+				type: 'error',
+				message: '添加购物车失败!'
 			});
 		}
 	},
@@ -376,6 +428,7 @@ export default {
 		this.getCommoditypictures();
 		this.getUserAsks();
 		this.getCommodityInventory();
+		this.getUserInfo();
 	}
 };
 </script>

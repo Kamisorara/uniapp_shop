@@ -1,15 +1,7 @@
 <template>
 	<!-- https://blog.csdn.net/pumpkin_truck/article/details/120140769 -->
 	<view>
-		<view class="empty" v-if="show">
-			<image
-				src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic.51yuansu.com%2Fpic3%2Fcover%2F01%2F82%2F40%2F596fa6dc00bb4_610.jpg&refer=http%3A%2F%2Fpic.51yuansu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1633499781&t=d37222e32213957ddbdd01d62e071309"
-				mode="widthFix"
-				style="width: 400rpx;"
-			></image>
-			<view class="empty-text">空空如也的购物</view>
-			<view class="empty-button" @click="goshopping">去选购</view>
-		</view>
+		<u-empty v-if="goods.length === 0" mode="car" icon="http://cdn.uviewui.com/uview/empty/car.png"></u-empty>
 		<view v-if="!show">
 			<view
 				class="goods-detail"
@@ -25,21 +17,21 @@
 								<text></text>
 							</label>
 						</checkbox-group>
-						<image :src="item.goodsImage" style="width: 150rpx;height: 140rpx;"></image>
+						<image :src="item.shopImg" style="width: 150rpx;height: 140rpx;"></image>
 					</view>
 					<view class="size">
-						<text style="font-size: 25rpx;">已选择：{{ item.size }}</text>
+						<text style="font-size: 25rpx;">已选择：{{ item.shopName }}</text>
 						<view class="num">
 							<text class="subtract" @click="reduce(item)">-</text>
 							<text class="num">{{ item.num }}</text>
 							<text @click="add(item)" class="add">+</text>
 						</view>
-						<text class="goods-price">￥{{ item.price }}/件</text>
+						<text class="goods-price">￥{{ item.shopPrice }}/件</text>
 					</view>
 				</view>
 				<view class="detail-right">
-					<image class="image" :src="item.deleteImage" @click="deleteImg(item)"></image>
-					<image class="image2" :src="item.collection" @click="collectionImg(item)"></image>
+					<image class="image" :src="require('../../static/ashbin.png')" @click="deleteImg(item)"></image>
+					<image class="image2" :src="require('../../static/favorite.png')" @click="collectionImg(item)"></image>
 				</view>
 			</view>
 		</view>
@@ -58,41 +50,58 @@
 			</view>
 			<view class="end-right">结算({{ totalNum }})</view>
 		</view>
+		<!-- toast弹窗 -->
+		<view><u-toast ref="uToast"></u-toast></view>
 	</view>
 </template>
 
 <script>
-
+import { virifyLogin } from '@/common/api/login.js';
+import { getUserCart } from '@/common/api/detail/commoditydetail.js';
 export default {
 	data() {
 		return {
+			//用户详情
+			userInfo: {
+				id: '',
+				userName: ''
+			},
+			//用户登录状态
+			isLogin: false,
 			show: false,
-			allchecked: true,
-			checked: true,
-			goods: [
-				{
-					size: '特大包',
-					num: 1,
-					flag: true,
-					price: 149,
-					goodsImage: 'https://g-search2.alicdn.com/img/bao/uploaded/i4/i4/3015107655/O1CN01nMBnQd26Q2dAB0bf4_!!0-item_pic.jpg_580x580Q90.jpg_.webp',
-					deleteImage: require('../../static/ashbin.png'),
-					collection: require('../../static/favorite.png')
-				},
-				{
-					size: '48包',
-					num: 1,
-					flag: true,
-					price: 80,
-					goodsImage: 'https://g-search3.alicdn.com/img/bao/uploaded/i4/i4/3160935493/O1CN01ffFCI51qRqLRl9Mwd_!!0-item_pic.jpg_580x580Q90.jpg_.webp',
-					deleteImage: require('../../static/ashbin.png'),
-					collection: require('../../static/favorite.png')
-				}
-			]
+			allchecked: false,
+			checked: false,
+			//购物车列表
+			goods: []
 		};
 	},
 	methods: {
-
+		//获取用户id
+		getUserInfo() {
+			virifyLogin().then(res => {
+				console.log(res);
+				if (res.data.code === 200) {
+					this.isLogin = true;
+					this.userInfo.id = res.data.data[0];
+					this.userInfo.userName = res.data.data[1];
+					this.getUserCarts();
+				} else {
+					this.ifUserNotLoginToast();
+					setTimeout(() => {
+						uni.navigateTo({
+							url: '../login/login'
+						});
+					}, 1000);
+				}
+			});
+		},
+		//获取用户购物车列表
+		getUserCarts() {
+			getUserCart(this.userInfo.id).then(res => {
+				console.log(res);
+				this.goods = res.data.data;
+			});
+		},
 		goshopping() {
 			uni.navigateTo({
 				url: '../../static/logo.png'
@@ -152,7 +161,18 @@ export default {
 		// 更改图片样式
 		collectionImg(item) {
 			item.collection = require('../../static/selected/favorite.png');
+		},
+		//用户未登录弹窗
+		ifUserNotLoginToast() {
+			this.$refs.uToast.show({
+				title: '用户未登录，请前去登录！',
+				type: 'error',
+				message: '用户未登录，请前去登录！'
+			});
 		}
+	},
+	onReady() {
+		this.getUserInfo();
 	},
 	computed: {
 		totalNum() {
@@ -166,10 +186,13 @@ export default {
 		totalPrice() {
 			let totalPrice = 0;
 			this.goods.map(item => {
-				item.flag ? (totalPrice += item.num * item.price) : (totalPrice += 0);
+				item.flag ? (totalPrice += item.num * item.shopPrice) : (totalPrice += 0);
 			});
 			return totalPrice;
 		}
+	},
+	onShow() {
+		this.getUserInfo();
 	}
 };
 </script>

@@ -27,3 +27,15 @@ export function getUserAsk(id) {
 export function getInventory(id) {
 	return request.get('/uniapp-detail/get-commodity-inventory' + '?id=' + id);
 }
+
+
+//根据商品id 获取商品库存信息
+export function postCommodityToCart(userId, inventoryId) {
+	return request.post('/uniapp-detail/post-commodityToCart' + '?userId=' + userId + "&inventoryId=" + inventoryId);
+}
+
+
+//根据用户id获取用户购物车列表
+export function getUserCart(userId) {
+	return request.get('/uniapp-detail/get-user-cart' + '?userId=' + userId);
+}

@@ -191,7 +191,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _login2 = __webpack_require__(/*! @/common/api/login.js */ 145);
+var _login = __webpack_require__(/*! @/common/api/login.js */ 145);
 var _token = __webpack_require__(/*! @/utils/token.js */ 143); //
 //
 //
@@ -223,7 +223,7 @@ var _default = { name: 'login', data: function data() {return { //是否按下�
       isClick: false, //记住我
       rememberMe: true, //用户登录信息
       userInfo: { username: '', password: '' }, show: false };}, methods: { //登录api调用
-    login: function login() {var _this = this;(0, _token.removeToken)('token');(0, _login2.login)(this.userInfo).then(function (res) {console.log(res);_this.isClick = true;(0, _token.setToken)('token', res.data.data.token);_this.showSuccessToast();if (res.data.code === 200) {setTimeout(function () {uni.reLaunch({ url: '../index/index' });
+    loginMethod: function loginMethod() {var _this = this;(0, _token.removeToken)('token');(0, _login.login)(this.userInfo).then(function (res) {console.log(res);_this.isClick = true;(0, _token.setToken)('token', res.data.data.token);_this.showSuccessToast();if (res.data.code === 200) {setTimeout(function () {uni.reLaunch({ url: '../index/index' });
           }, 1500);
         } else if (res.data.code === 401) {
           _this.showFileToast();

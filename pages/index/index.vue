@@ -245,12 +245,16 @@ export default {
 		},
 		//验证用户登录情况
 		virifyUserLogin() {
-			virifyLogin().then(res => {
-				console.log(res);
-				if (res.data.code === 200) {
-					this.isLogin = true;
-				}
-			});
+			virifyLogin()
+				.then(res => {
+					console.log(res);
+					if (res.data.code === 200) {
+						this.isLogin = true;
+					}
+				})
+				.catch(err => {
+					removeToken('token');
+				});
 		},
 		//用户未登录弹窗
 		ifUserNotLoginToast() {
